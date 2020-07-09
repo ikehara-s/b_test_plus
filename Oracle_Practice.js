@@ -3542,7 +3542,69 @@ function sortQuestion(){
 	sortChoice();
 	
 	// 271
+	q_list.push(new Question('Oracle Linux 6にOracle RDBMS Pre-Install RPMをインストールすると行われる処理について正しいものを2つ選択しなさい。',
+	'SILVER参考書180Pを参照'));
+	pushChoice('Oracle DatabaseやOracle Grid Infrastrucureのインストールに必要なOSパッケージを自動でインストールする', true);
+	pushChoice('Oracleソフトウェアをデフォルト構成で自動インストールする', false);
+	pushChoice('oinstallグループの作成とインベントリディレクトリの作成を自動で行う', false);
+	pushChoice('oracleユーザーとdbaグループの作成を自動で行う', true);
+	sortChoice();
 	
+	// 272
+	q_list.push(new Question('データベースの削除に関する説明として正しいものを2つ選択しなさい。',
+	'SILVER参考書185Pを参照'));
+	pushChoice('DBCAを使用して削除する場合、対象となるデータベースは停止しておく必要がある', false);
+	pushChoice('DROP DATABASE文を使用する場合、対象となるデータベースはRESTRICTモードでマウントしておく必要がある', true);
+	pushChoice('RMANを使用してDROP DATABASE文を使用する場合、アーカイブログファイルやバックアップファイルも削除される', true);
+	pushChoice('DBCAを使用して削除する場合、削除完了後にOSを再起動する必要がある', false);
+	sortChoice();
+	
+	// 273
+	q_list.push(new Question('Linux環境でデータベースを作成します。'
+	+ '\nDBCAによるデータベース作成に関する説明として適切なものを3つ選択しなさい。',
+	'SILVER参考書187Pを参照'));
+	pushChoice('拡張モードにて「データベース作成スクリプトの生成」を選択する場合、/etc/oratabファイルは変更されない', true);
+	pushChoice('「データベースの作成」と「データベース作成スクリプトの生成」は同時に選択することはできない', false);
+	pushChoice('ファイルシステムにデータベースファイルを保存する場合、初期化パラメータファイルはSPFILEのみ作成される', true);
+	pushChoice('ASMにデータベースファイルを保存する場合、テキスト形式のPFILEとバイナリ形式のSPFILEの両方が作成される', true);
+	sortChoice();
+	
+	// 274
+	q_list.push(new Question('Oracle Database 12.1.0.1のDBCAを使用して、コンテナデータベースとしてデータベースを作成しました。'
+	+ '\nデータベースに関する説明として正しいものを2つ選択しなさい。',
+	'SILVER参考書188Pを参照'));
+	pushChoice('グローバルデータベース名とPDB名のネットサービス名がtnsnames.oraファイルに登録される', false);
+	pushChoice('グローバルデータベース名とPDB名のサービス名がリスナーに登録される', true);
+	pushChoice('PDBを自動起動するためのデータベーストリガーが自動で作成される', false);
+	pushChoice('DBCAによる作成直後のPDBはオープンしている', true);
+	sortChoice();
+	
+	// 275
+	q_list.push(new Question('DBCAでコンテナデータベースとしてデータベースを作成し、Enterprise Manager Database Expressの構成を選択しました。'
+	+ '\n構成されたEnterprise Manager Database Expressを使用した操作として可能なものを2つ選択しなさい。',
+	'SILVER参考書189Pを参照'));
+	pushChoice('ルートコンテナと各PDBの表領域を作成', false);
+	pushChoice('各PDBのローカルユーザーに権限を付与', false);
+	pushChoice('ルートコンテナにて共通ユーザーを作成', true);
+	pushChoice('CDB全体とPDBのパフォーマンスデータの確認', true);
+	sortChoice();
+	
+	// 276
+	q_list.push(new Question('次のデータベースの文字コードに関する説明として正しいものを2つ選択しなさい。'
+	+ '\n'
+	+ '\nSQL> SELECT * FROM nls_database_parameters'
+	+ '\n  2  WHERE parameter LIKE "%CHARACTERSET%";'
+	+ '\n'
+	+ '\nPARAMETR                     VALUE'
+	+ '\n---------------------------- --------------'
+	+ '\nNLS_NCHAR_CHARACTERSET       AL16UTF16'
+	+ '\nNLS_CHARACTERSET             AL32UTF8',
+	'SILVER参考書191Pを参照'));
+	pushChoice('AL16UTF16を使用すると常に2バイトで格納される', false);
+	pushChoice('NCHAR型やNVARCHAR2型を使用した場合のみUnicodeが使用される', false);
+	pushChoice('SQLやPL/SQLのVARCHAR2型やCHAR型は可変幅の1バイト～4バイトで表現される', true);
+	pushChoice('AL16UTF16をNLS_CHARACTERSETで設定することはできない', true);
+	sortChoice();
 }());
 
 (function(){
