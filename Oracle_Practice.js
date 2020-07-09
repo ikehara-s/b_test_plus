@@ -4332,7 +4332,110 @@ function sortQuestion(){
 	sortChoice();
 	
 	// 332
+	q_list.push(new Question('2 つのプラガブル・データベース (PDB) を含むマルチテナント・コンテナ・データベース (CDB)で、フラッシュバックが有効になっています。PDB の一方から、あるローカル・ユーザーが誤ってドロップされました。'
+	+ '\nあなたは、この PDB を、当該ローカル・ユーザーがドロップされる前の時点までフラッシュバックしたいと考えています。あなたは、CDB に接続し、次のコマンドを実行しました。'
+	+ '\n'
+	+ '\nSQL > SHUTDOWN IMMEDIATE '
+	+ '\nSQL > STARTUP MOUNT '
+	+ '\nSQL > FLASHBACK DATABASE to TIME "TO_DATE ("08/20/12" , "MM/DD/YY")"; '
+	+ '\n'
+	+ '\n以下のコマンドを見てください。'
+	+ '\n'
+	+ '\n1 ALTER PLUGGABLE DATABASE ALL OPEN;'
+	+ '\n2 ALTER DATABASE OPEN;'
+	+ '\n3 ALTER DATABASE OPEN RESETLOGS;'
+	+ '\n'
+	+ '\nフラッシュバックされたスキーマに対する更新を可能にするには、次にどのコマンドを実行すればよいですか？',
+	'以下の順に２つのコマンドを実行する必要があります。 コマンドの実行には、SQL PlusやRMANを使用します。'
+	+ '\n'
+	+ '\nALTER DATABASE OPEN RESETLOGS;'
+	+ '\nALTER PLUGGABLE DATABASE ALL OPEN;'));
+	pushChoice('2 のみ', false);
+	pushChoice('3 のみ', false);
+	pushChoice('1 と 2', false);
+	pushChoice('3 と 1', true);
+	pushChoice('1 のみ', false);
+	sortChoice();
 	
+	// 333
+	q_list.push(new Question('管理対象のマルチテナント・コンテナ・データベース (CDB) には、3 つのプラガブル・データベース (PDB) が含まれています。'
+	+ '\nあなたは、制御ファイルが破損していることに気づきました。'
+	+ '\nそこで、RMAN を使用してこの制御ファイルをリカバリしようと計画しています。'
+	+ '\nこれらの PDB に関連付けされた起動トリガーはありません。'
+	+ '\n制御ファイルをリカバリし、データベースを完全に動作可能な状態にするには、次のどの 手順を実行すればよいですか？ 3 つ選択してください。',
+	'現行のすべての制御ファイルのコピーが消失したか、または破損した場合は、バックアップ制御ファイルをリストアおよびマウントする必要があります。'
+	+ '\nリストアされたデータファイルがない場合でも、RECOVER コマンドを実行し、RESETLOGS オプションを指定してデータベースをオープンする必要があります。'
+	+ '\n'));
+	pushChoice('コンテナ・データベース (CDB) をマウントし、制御ファイル自動バックアップから制御ファイルをリストアする。', false);
+	pushChoice('NORMAL モードで CDB をリカバリ、オープンする', false);
+	pushChoice('マウントされていない状態でデータベース・インスタンスを起動し、制御ファイル自動バックアップから制御ファイルをリストアする。', true);
+	pushChoice('各プラガブル・データベースをリカバリする。', false);
+	pushChoice('すべてのプラガブル・データベースをオープンする。', true);
+	pushChoice('CDB をマウントした後、RESETLOGS オプションを指定してデータベースをリカバリ、オープンする。', true);
+	sortChoice();
+	
+	// 334
+	q_list.push(new Question('管理対象のデータベースでは、TBS PERCENT USED パラメータが 60 に設定され、TBS PERCENT FREE パラメータが 20 に設定されています。'
+	+ '\n情報ライフ・サイクル管理 (ILM) を使用してデータ移行を自動化する場合に、自動化される可能性のあるストレージ階層化の操作はどれですか？'
+	+ '\n2 つ選択してください。',
+	''));
+	pushChoice('ターゲット表領域を読取り専用に設定する。', true);
+	pushChoice('ソース表領域が TBS PERCENT USED を超えた場合に、別のストレージ階層にあるより低い圧縮率のターゲット表領域に、一部のブロックを移動する。', false);
+	pushChoice('ターゲット表領域をオフラインに設定する。', false);
+	pushChoice('ソース表領域が TBS PERCENT USED を超えた場合に、別のストレージ階層にあるより高い圧縮率のターゲット表領域に、一部のセグメントを移動する。', true);
+	pushChoice('ソース表領域が TBS PERCENT USED を超えた場合に、別のストレージ階層にあるより高い圧縮率のターゲット表領域に、全セグメントを移動する。', false);
+	sortChoice();
+	
+	// 335
+	q_list.push(new Question('ストレージ管理者によってプロビジョニングされた新しいストレージ層を活用するため、大きなヒープを必要とする表のパーティションを、Oracle 12c データベース内の他の表領域に移動する必要があります。'
+	+ '\nこの表には、ローカル・パーティションとグローバル・パーティションの両方のBツリー索引が定義されています。'
+	+ '\nこの表には、日中は大量のトランザクションがアクセスし、夜間と週末にも中規模量のトランザクションがアクセスします。'
+	+ '\n可用性の中断を最小限に抑える必要があります。'
+	+ '\nこの要件についての正しい説明はどれですか？ 3 つ選択してください。',
+	'パーティションの移動を行う際、デフォルトでは索引がUNUSABLEとなり、グローバル索引を手動で再構築する必要がありますが、以下のようにUPDATE INDEXES句を付与することにより、自動的に索引をメンテナンスすることができるようになります。'
+	+ '\nALTER TABLE xxxxx MOVE PARTITION UPDATE INDEXES'
+	+ '\nよって、トランザクションが発生している場合でも、その動作に影響を与えません。'));
+	pushChoice('パーティションは同じ表領域に圧縮できる。', true);
+	pushChoice('パーティションを移動した後、グローバル索引を手動で再構築する必要がある。', false);
+	pushChoice('パーティションを移動した後、ローカル索引を手動で再構築する必要がある。', false);
+	pushChoice('パーティションは新しい表領域にオンラインで移動できる。', true);
+	pushChoice('パーティションは新しい表領域に圧縮できる。', true);
+	sortChoice();
+	
+	// 336
+	q_list.push(new Question('仮想プライベート・データベース (VPD) ポリシーで表を再定義するための、以下のコマンドを見てください。'
+	+ '\n表の再定義について正しく説明しているものはどれですか？'
+	+ '\n2 つ選択してください。'
+	+ '\n'
+	+ '\nBEGIN'
+	+ '\n  DBMS_RLS.ADD_POLICY ('
+	+ '\n    object_schema   => "hr",'
+	+ '\n    object_name   => "employees",'
+	+ '\n    policy_name   => "employees_policy",'
+	+ '\n    function_schema   => "hr",'
+	+ '\n    policy_function   => "auth_emp_dep_100",'
+	+ '\n    statement_types => "select, insert, update, delete",'
+	+ '\n    );'
+	+ '\nEND;'
+	+ '\n'
+	+ '\nBEGIN'
+	+ '\n  DBMS_REDEFINITION.START_REDEF_TABLE ('
+	+ '\n    uname   => "hr",'
+	+ '\n    orig_table  => "employees",'
+	+ '\n    int_table => "int_employees",'
+	+ '\n    col_mapping => NULL,'
+	+ '\n    options_flag  => DBMS_REDEFINITION.CONS_USE_PK,'
+	+ '\n    orderby_cols  => NULL,'
+	+ '\n    part_name => NULL,'
+	+ '\n    copy_vpd_opt  => DBMS_REDEFINITION.CONS_VPD_AUTO);'
+	+ '\nEND;',
+	'DBMS_RLS.ADD_POLICY / The DBMS_RLS パッケージには、ファイングレイン・アクセス・コントロールの管理インタフェースが含まれ、これを使用して仮想プライベート・データベース (VPD) を実装します。'
+	+ '\nDBMS_RLSは、Enterprise Edition でのみ使用できます。'));
+	pushChoice('オンライン再定義中に、元の表から新しい表に VPD ポリシーがコピーされる。', true);
+	pushChoice('オンライン再定義中に、元の表から新しい表に VPD ポリシーを手動でコピーする必要がある。', false);
+	pushChoice('表内の列名や列の種類は一切変更せずに、表に対するすべてのトリガーが無効になる。', true);
+	pushChoice('再定義中に EMPLOYEES 表の主キー制約が無効になる。', false);
+	sortChoice();
 }());
 
 (function(){
