@@ -2069,7 +2069,7 @@ function sortQuestion(){
 	q_list.push(new Question('チャネルによって実行されるRMANのバックアップやリカバリ処理状況を監視するため有用な動的パフォーマンスビューを選択しなさい。',
 	'GOLD参考書107Pを参照'));
 	pushChoice('V$CHANNEL', false);
-	pushChoice('V$SESSION_LOMGOPS', true);
+	pushChoice('V$SESSION_LONGOPS', true);
 	pushChoice('V$SESSION_CHANNEL', false);
 	pushChoice('V$RMAN_CHANNEL', false);
 	sortChoice();
@@ -3462,7 +3462,7 @@ function sortQuestion(){
 	sortChoice();
 	
 	// 263
-	q_list.push(new Question('リソースマネージャによるインスタンスけーじんぐに必要な構成を2つ選択しなさい。',
+	q_list.push(new Question('リソースマネージャによるインスタンスケージングに必要な構成を2つ選択しなさい。',
 	'SILVER参考書164Pを参照'));
 	pushChoice('CPU_COUNT初期化パラメータ', true);
 	pushChoice('mgmt_p1を使用したCPU使用量のディレクティブ', false);
