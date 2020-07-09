@@ -3973,6 +3973,36 @@ function sortQuestion(){
 	pushChoice('PDBからソースデータベースに接続するデータベースリンクを作成後、インポートすることができる', false);
 	pushChoice('PDBに直接インポートすることができないため、CDBにインポートを行い、PDBにデータをコピーする', false);
 	sortChoice();
+	
+	// 307
+	q_list.push(new Question('Oracle Database 9.2.0.8のデータベースを12.1にアップグレードする方法として適切なものを2つ選択しなさい。',
+	'SILVER参考書223Pを参照'));
+	pushChoice('サポートされているバージョンにアップグレードしてから、Oracle Database12.1にアップグレードする', true);
+	pushChoice('Oracle Database 9iのデータベースでDBMS_PDB.DESCRIBEを使用して接続するためのXMLファイルを作成後、12.1のCDBに接続する', false);
+	pushChoice('直接アップグレードせずに新規データベースを作成後、エクスポート／インポートを使用してデータを移行する', true);
+	pushChoice('Oracle Database 9iオプションを指定した12.1のDBUAでアップグレードを行う', false);
+	sortChoice();
+	
+	// 308
+	q_list.push(new Question('Oracle Database 11.2のGrid InfrastructureでOracle RestartとASMを使用している環境があります。'
+	+ '\nデータベースを12.1にアップグレードするにあたり、12.1のGrid Infrastructureをインストールすることになりました。'
+	+ '\n手順として正しいものを2つ選択しなさい。',
+	'SILVER参考書224Pを参照'));
+	pushChoice('Oracle Database 12.1のGrid Infrastructureを「スタンドアロンサーバー用にOracle Grid Infrastructureをインストールおよび構成」インストールオプションでインストールし、11.2のGrid Infrastructureを後からアンインストールする', false);
+	pushChoice('Oracle Database 12.1のGrid Infrastructureを「Oracle Grid InfrastructureまたはOracle 自動ストレージ管理のアップグレード」インストールオプションでアップグレードする', true);
+	pushChoice('Oracle Database 12.1のGrid Infrastructureを「Oracle Grid Infrastructureソフトウェアのみをインストール」インストールオプションでインストールし、ASMCAを使用してアップグレードを行う', true);
+	pushChoice('Oracle Restartに登録したコンポーネントを削除してから、12.1のGrid Infrastructureを「スタンドアロンサーバー用にOracle Grid Infrastructureをインストールおよび構成」インストールオプションでインストールする', false);
+	sortChoice();
+	
+	// 309
+	q_list.push(new Question('Oracle Linuxを使用している環境でOracle Database12.1のGrid Infrastructureにアップグレードを行い、rootupgrade.shを実行しました。'
+	+ '\n現在の状態として正しいものを2つ選択しなさい。',
+	'SILVER参考書225Pを参照'));
+	pushChoice('新しいGrid InfrastructureインストールディレクトリにOracleホームが変更される', true);
+	pushChoice('既存のASMディスクグループのASM互換性が新しいバージョンに変更される', false);
+	pushChoice('OHASDが新しいOracleホームから起動される', true);
+	pushChoice('ASMCAを実行するまでASMインスタンスは古いOracleホームから起動される', false);
+	sortChoice();
 }());
 
 (function(){
