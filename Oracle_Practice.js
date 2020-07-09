@@ -4436,6 +4436,165 @@ function sortQuestion(){
 	pushChoice('表内の列名や列の種類は一切変更せずに、表に対するすべてのトリガーが無効になる。', true);
 	pushChoice('再定義中に EMPLOYEES 表の主キー制約が無効になる。', false);
 	sortChoice();
+	
+	// 337
+	q_list.push(new Question('データベースをリカバリするため、次のコマンドを実行しました。'
+	+ '\n'
+	+ '\nRMAN> RUN{'
+	+ '\n  SET UNTIL TIME "2016-12-20:08:00:00";'
+	+ '\n  RESTORE DATABASE;'
+	+ '\n  SECOVER DATABASE;'
+	+ '\n}'
+	+ '\n'
+	+ '\nこの状況として正しい記述はどれですか。'
+	+ '\n',
+	''));
+	pushChoice('全データファイルをリストアし、12/20の8時の時点までREDOログを適用する', false);
+	pushChoice('12/20の8時より前に作成されたバックアップから全データファイル、REDOログファイルおよび制御ファイルをリストアし、最新の状態までREDOログを適用する', false);
+	pushChoice('12/20の8時より前に作成されたバックアップから全データファイルおよび制御ファイルをリストアし、アーカイブログ及びREDOログを12/20の8時の時点まで適用する', true);
+	pushChoice('最新のバックアップから制御ファイルおよび全データファイルをリストアしてから、12/20の8時の時点までREDOログを適用する', false);
+	sortChoice();
+	
+	// 338
+	q_list.push(new Question('構成にOracle Secure Backupが含まれています。'
+	+ '\nテープ上のOracleバックアップピースを管理するには何を使用するのが最適ですか。',
+	'RMANを使用せずにOracle Secure Backupユーティリティを使用してテープに格納されているバックアップピースを管理した場合、Oracle Secure BackupカタログとRMANリポジトリが非同期となる場合があります。'
+	+ '\nその場合、RMANのCROSSCHECKコマンドでRMANリポジトリを同期します。'));
+	pushChoice('Oracle Secure Backup', false);
+	pushChoice('RMAN', true);
+	pushChoice('SQL', false);
+	sortChoice();
+	
+	// 339
+	q_list.push(new Question('次のコマンドを発行しました。'
+	+ '\n'
+	+ '\nSQL> CREATE TABLE HR.EMP(id NUMBER(4) PRIMARY KEY, name VARCHAR2(10));'
+	+ '\nSQL> DROP TABLE HR.EMP;'
+	+ '\nSQL> CREATE TABLE HR.EMP(id NUMBER(4) PRIMARY KEY, name VARCHAR2(10) phone VARCHAR2(11));'
+	+ '\nSQL> DROP TABLE HR.EMP'
+	+ '\nSQL> FLASHBACK TABLE HR.EMP TO BEFORE DROP;'
+	+ '\n'
+	+ '\n正しい説明を選択してください。',
+	'フラッシュバックドロップでリカバリするときは索引も同時にリカバリされる。'
+	+ '\n同一名称のオブジェクトをリカバリされるときはLIFOにしたがって対象が選択される。'));
+	pushChoice('phone列を含むHR.EMP表がリカバリされる', false);
+	pushChoice('phone列を含むHR.EMP表と、その主キーの索引がリカバリされる', true);
+	pushChoice('phone列を含まないHR.EMP表がリカバリされる', false);
+	pushChoice('phone列を含まないHR.EMP表と、その主キーの索引がリカバリされる', false);
+	pushChoice('どちらのEMP表をリカバリするか指定していないのでエラーとなる', false);
+	sortChoice();
+	
+	// 340
+	q_list.push(new Question('フラッシュバックデータベースを使用してリカバリできるケースはどれですか。',
+	'RESIZEコマンドでファイルサイズを縮小　→　フラッシュバックデータベースではフラッシュバックログを適用することでデータベースを過去の状態に戻すが、ベースとなるデータファイルが正しいサイズで存在していないと、フラッシュバックログに含まれる古いブロックイメージを当てはめることができないため。'
+	+ '\n誤って削除した表領域も同様の理由である。'
+	+ '\n誤って再作成した制御ファイルを元の古い制御ファイルに戻す　→　フラッシュバックログには制御ファイルの情報は含まれない'
+	+ '\nパラメータファイルも同様の理由である。'
+	+ '\n'
+	+ '\nTO BEFORE RESETLOGSオプションをつけて、RESETLOGS前の状態にフラッシュバックデータベースすることもできる。'));
+	pushChoice('誤ってRESIZEコマンドでファイルサイズを縮小したデータファイルを元のサイズに戻す', false);
+	pushChoice('誤って削除した表領域をリカバリする', false);
+	pushChoice('誤って削除したスキーマをリカバリする', true);
+	pushChoice('誤って再作成した制御ファイルを元の古い制御ファイルに戻す', false);
+	pushChoice('誤ってパラメータ変更したためパラメータファイルを元の状態に戻す', false);
+	sortChoice();
+	
+	// 341
+	q_list.push(new Question('互換性レベル、OS、キャラクタセットが同じプラットフォーム間で、表領域を転送するための手順として正しいものはどれですか。'
+	+ '\n'
+	+ '\na.ソースデータベースで表領域をREAD ONLYにする。'
+	+ '\nb.ソースデータベースからメタデータをエクスポートする。'
+	+ '\nc.ターゲットデータベースにメタデータをインポートする。'
+	+ '\nd.ダンプファイルをターゲットに転送する。'
+	+ '\ne.ダンプファイルとデータファイルをターゲットに転送する。',
+	'エクスポート／インポートが必要なのはメタデータのみである。'
+	+ '\n異なるプラットフォーム間で転送する場合は、RMANでCONVERTするステップが必要です。'));
+	pushChoice('a → b → d → c', false);
+	pushChoice('a → b → e → c', true);
+	pushChoice('b → e → c', false);
+	sortChoice();
+	
+	// 342
+	q_list.push(new Question('以下のコマンドを使って複製を行います。'
+	+ '\n正しい説明を2つ選択してください。'
+	+ '\n'
+	+ '\nDUPLICATE TARGET DATABASE TO orcl2'
+	+ '\n  FROM ACTIVE DATABASE'
+	+ '\n  USING BACKUPSET;',
+	'RMANからターゲットデータベースと補助インスタンスに接続しておく必要がある。'
+	+ '\nまた、補助インスタンスからソースデータベースに対して、プルメソッドを用いての複製が行われる。'));
+	pushChoice('ターゲットおよび補助インスタンスに接続しておく必要がある', true);
+	pushChoice('リカバリカタログに接続しておく必要がある', false);
+	pushChoice('プルメソッドが使用される', true);
+	pushChoice('プッシュメソッドが使用される', false);
+	sortChoice();
+	
+	// 343
+	q_list.push(new Question('バックアップに時間が掛かりすぎていて困っています。'
+	+ '\n調べたところ、BACKUP VALIDATEの時間が、バックアップの所要時間に近いことがわかりました。'
+	+ '\nこのことから何が言えますか。',
+	'BACKUP VALIDATEは読み取りの処理である。'));
+	pushChoice('読み取りフェーズがボトルネックとなっている可能性が高い', true);
+	pushChoice('書き込みフェースがボトルネックとなっている可能性が高い', false);
+	pushChoice('暗号化フェーズがボトルネックとなっている可能性が高い', false);
+	pushChoice('BACKUP VALIDATEは破損ブロックの調査をするコマンドなので、バックアップの所要時間とは全く関係ない', false);
+	sortChoice();
+	
+	// 344
+	q_list.push(new Question('マルチテナントアーキテクチャについて正しいものはどれですか。'
+	+ '\n',
+	'REDOログも共通のため、指定したPDBだけに対してログスイッチを行うことはできない。'));
+	pushChoice('PDBごとに独自の制御ファイルを持つ', false);
+	pushChoice('PDBごとに独自のUNDO表領域を持つ', false);
+	pushChoice('PDBごとに独自の一時表領域を設定できる', true);
+	pushChoice('指定したPDBだけに対してログスイッチを行うことができる', false);
+	sortChoice();
+	
+	// 345
+	q_list.push(new Question('4つのPDBを含むCDBを以下のコマンドで実行しました。'
+	+ '\n'
+	+ '\nSTARTUP;'
+	+ '\n'
+	+ '\n起動トリガーなどは作成していません。'
+	+ '\nどのような状態となりますか。',
+	''));
+	pushChoice('すべてのPDBがOPEN状態となる', false);
+	pushChoice('CDB$ROOTは読み取り／書き込みモード、それ以外はCLOSEのままとなる', false);
+	pushChoice('CDB$ROOTは読み取り／書き込みモード、PDB$SEEDはREAD ONLYモード、PDBはMOUNT状態となる', true);
+	pushChoice('すべてのPDBはREAD ONLYモードとなる', false);
+	sortChoice();
+	
+	// 346
+	q_list.push(new Question('CDBに複数のPDBが含まれています。'
+	+ '\n次のコマンドについて正しい説明はどれですか。'
+	+ '\n'
+	+ '\nCREATE USER c##a_admin'
+	+ '\n  IDENTIFIED BY password'
+	+ '\n  DEFAULT TABLESPACE users'
+	+ '\n  QUOTA 100M ON users',
+	''));
+	pushChoice('すべてのPDB上にusers表領域を作成しておく必要がある', true);
+	pushChoice('CDB$ROOT上にusers表領域があればよい', false);
+	pushChoice('ユーザー名に#を含むのでエラーとなる', false);
+	sortChoice();
+	
+	// 347
+	q_list.push(new Question('CDB上にPDB1、PDB2という2つのPDBがあります。'
+	+ '\nRMANでターゲットPDB1に接続した状態で次のコマンドを発行しました。'
+	+ '\n'
+	+ '\nBACKUP DATABASE PLUS ARCHIVELOG;'
+	+ '\n'
+	+ '\nどのようになりますか。',
+	'PLUS ARCHIVELOGや制御ファイルは共通コンポーネントであり、PDBには含まれない。'
+	+ '\nそのためバックアップから除外されるが、エラーにはならない。'));
+	pushChoice('コマンドはエラーとなる', false);
+	pushChoice('コマンドは成功し、PDB1のデータファイルのみがバックアップされる', true);
+	pushChoice('コマンドは成功し、PDB1とアーカイブログファイルがバックアップされる', false);
+	pushChoice('コマンドは成功し、CDB上のすべてのデータベースとアーカイブログファイルがバックアップされる', false);
+	sortChoice();
+	
+	// 348
+	
 }());
 
 (function(){
