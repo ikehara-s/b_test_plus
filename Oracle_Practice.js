@@ -3744,6 +3744,235 @@ function sortQuestion(){
 	pushChoice('領域不足時に一時停止し、領域不足が解消すると再開', false);
 	pushChoice('災害時に別のサイトにフェイルオーバーを提供する', false);
 	sortChoice();
+	
+	// 289
+	q_list.push(new Question('Database Upgrade Assistant(DBUA)を使用したアップグレードに関する説明として正しいものを2つ選択しなさい。',
+	'SILVER参考書203Pを参照'));
+	pushChoice('アップグレード中に追加されたアカウントのロックを自動で解除させることはできない', true);
+	pushChoice('リリースアップグレードに使用することができるが、パッチセットアップグレードに使用することはできない', false);
+	pushChoice('不要となった初期化パラメータや非推奨の初期化パラメータなどは自動で調整されるため、アップグレード中に制御することはできない', true);
+	pushChoice('アップグレード処理が自動化されるため、表領域やREDOログ構成などの修正を行っておくことはできない', false);
+	sortChoice();
+	
+	// 290
+	q_list.push(new Question('HP-UX環境で動作しているOracle Database 11.2.0.4のデータベースを、12.1.0.1のOracle Linux環境に移行することになりました。'
+	+ '\nアップグレード方法として適切なものを選択しなさい。',
+	'SILVER参考書204Pを参照'));
+	pushChoice('DBUAを使用して直接アップグレードを行う', false);
+	pushChoice('12.1のデータベース作成後、エクスポート／インポートを使用してデータを移行する', true);
+	pushChoice('Oracleホームをコピー後、DBUAを使用して直接アップグレードを行う', false);
+	pushChoice('RMANを使用してファイルを変換後、DBUAを使用して直接アップグレードを行う', false);
+	sortChoice();
+	
+	// 291
+	q_list.push(new Question('ASMを使用したOracle Database 11.2のデータベースを12.1にアップグレードします。'
+	+ '\n手順に関する説明として正しいものを2つ選択しなさい。',
+	'SILVER参考書204Pを参照'));
+	pushChoice('Oracle Database 12cのGrid Infrastructureを新しいOracleホームにインストールし、ASMインスタンスをアップグレードする', true);
+	pushChoice('Oracle Database 11.2のASMインスタンスとASMを使用したデータベースインスタンスはオープンしておく', false);
+	pushChoice('Grid Infrastructureホームをインストールする前に、Oracle Database 11.2のリスナーを停止しておく', true);
+	pushChoice('ASMディスクグループの互換性レベルは、アップグレード前にOracle Database 12.1に変更しておく', false);
+	sortChoice();
+	
+	// 292
+	q_list.push(new Question('アップグレードした環境で、パフォーマンスを低下させないことが重要な要件になっています。'
+	+ '\n事前のパフォーマンステストに適切なOracle機能を2つ選択しなさい。',
+	'SILVER参考書206Pを参照'));
+	pushChoice('フラッシュバックデータアーカイブ', false);
+	pushChoice('リソースマネージャ', false);
+	pushChoice('SQLパフォーマンスアナライザ', true);
+	pushChoice('データベースリプレイ', true);
+	sortChoice();
+	
+	// 293
+	q_list.push(new Question('Oracle Database Vaultを使用したOracle Database 11.2のデータベースをアップグレードするテストで、olspreupgrade.sqlを実行するように指示されました。'
+	+ '\n実行手順として適切なものを選択しなさい。',
+	'SILVER参考書207Pを参照'));
+	pushChoice('アップグレードする前に、Oracle Database 12cのOracleホームにあるolspreupgrade.sqlを11.2のデータベースで実行する', true);
+	pushChoice('アップグレードする前に、Oracle Database 11.2cのOracleホームにあるolspreupgrade.sqlを11.2のデータベースで実行する', false);
+	pushChoice('アップグレードする前に、Oracle Database 12cのOracleホームにあるolspreupgrade.sqlを12cのデータベースで実行する', false);
+	pushChoice('アップグレードする前に、Oracle Database 11.2のOracleホームにあるolspreupgrade.sqlを12cのデータベースで実行する', false);
+	sortChoice();
+	
+	// 294
+	q_list.push(new Question('Oracle Database 11.2のデータベースを12cにアップグレードする必要があります。'
+	+ '\n12cソフトウェアはインストールが完了し、Database Upgrade Assistant(DBUA)を使用せずにアップグレードするにあたり、最初に実行することが推奨されている操作を選択しなさい。',
+	'SILVER参考書208Pを参照'));
+	pushChoice('データベースをRESTRICTEDモードでオープンする', false);
+	pushChoice('アップグレード前情報ツール（preupgrade.sql）を実行する', true);
+	pushChoice('元のOracleホームからlistener.oraファイルを新しいOracleホームにコピーする', false);
+	pushChoice('元のOracleホームから初期化パラメータファイルを新しいOracleホームにコピーする', false);
+	sortChoice();
+	
+	// 295
+	q_list.push(new Question('Oracle Database 11.2のデータベースを12cにアップグレードするにあたり、次の処理を実行しました。'
+	+ '\n目的として正しいものを3つ選択しなさい。'
+	+ '\n'
+	+ '\n$ cp /u01/app/oracle/product/12.1.0/dbhome_1/rdbms/admin/emremove.sql'
+	+ '\n     /u02/app/oracle/product/11.2.0/dbhome_1/rdbms/admin/emremove.sql'
+	+ '\n'
+	+ '\n$ emctl stop dbconsole'
+	+ '\n'
+	+ '\n$ sqlplus / as sysdba'
+	+ '\n'
+	+ '\nSQL> @/u02/app/oracle/product/12.1.0/dbhome_1/rdbms/admin/emremove.sql'
+	+ '\n'
+	+ '\nSQL> exec DBMS_STATS.GATHER_DICTIONARY_STATS',
+	'SILVER参考書209Pを参照'));
+	pushChoice('Oracle Enterprise Manager Database Controlリポジトリはアップグレード中に削除されるが、アップグレード時間を短縮するために事前に削除した', true);
+	pushChoice('ディクショナリのオプティマイザ統計を再進化しておくことで内部操作を最適化する', true);
+	pushChoice('preupgrade_fixups.sqlでは修正されない処理のため、手動で実行した', true);
+	pushChoice('アップグレードエラーを避けるために手動で実行した', false);
+	sortChoice();
+	
+	// 296
+	q_list.push(new Question('次のコマンドの結果に関する説明として正しいものを選択しなさい。'
+	+ '\n'
+	+ '\nSQL> @$ORACLE_HOME/rdbms/admin/utluiobj.sql'
+	+ '\n.'
+	+ '\n.'
+	+ '\nPL/SQLプロシージャが正常に完了しました'
+	+ '\n'
+	+ '\nSQL> SELECT * FROM REGISTRY$sys_inv_objs;'
+	+ '\n'
+	+ '\nOWNER     OBJECT_NAME     OBJECT_TYPE'
+	+ '\n--------- --------------- ---------------'
+	+ '\nSYS       P2              PROCEDURE'
+	+ '\n'
+	+ '\nSQL> SELECT * FROM REGISTRY$nonsys_inv_objs;'
+	+ '\n'
+	+ '\nレコードが選択されませんでした。',
+	'SILVER参考書210Pを参照'));
+	pushChoice('移行できないオブジェクトの存在を確認する', false);
+	pushChoice('データベース内の無効なオブジェクトの存在を確認する', true);
+	pushChoice('文字コード変換できないオブジェクトの存在を確認する', false);
+	pushChoice('アップグレード前に無効化したいオブジェクトを格納する', false);
+	sortChoice();
+	
+	// 297
+	q_list.push(new Question('DBUAを使用する前にバックアップを取得することが推奨される理由として正しいものを2つ選択しなさい。',
+	'SILVER参考書212Pを参照'));
+	pushChoice('手動バックアップであればオンラインバックアップを検討できるが、DBUAからのバックアップはデータベースを停止してのコールドバックアップのため、可用性に問題が発生する', true);
+	pushChoice('手動バックアップであればRMANを使用した圧縮やテープへのバックアップもできるが、DBUAからのバックアップはファイルシステムへの非圧縮コピーのため、領域的な問題が発生する', true);
+	pushChoice('手動バックアップであれば表領域を読み取り専用表領域のバックアップを除外できるが、DBUAからのバックアップはすべてのファイルをバックアップするため、バックアップ時間の問題が発生する', false);
+	sortChoice();
+	
+	// 298
+	q_list.push(new Question('Oracle Database 11.2のデータベースを12cにアップグレードします。'
+	+ '\nDBUAを使用せずに、高速にアップグレードする必要があります。'
+	+ '\n適切なスクリプトを選択しなさい。',
+	'SILVER参考書213Pを参照'));
+	pushChoice('catcon.pl', false);
+	pushChoice('catuppst.sql', false);
+	pushChoice('catupgrd.sql', false);
+	pushChoice('catctl.pl', true);
+	sortChoice();
+	
+	// 299
+	q_list.push(new Question('DBUAを使用せずに、Oracle Database 12cへのアップグレードを実行しました。'
+	+ '\nコンポーネントのアップグレードに問題がなかったかどうかを確認するために使用できるスクリプトを選択しなさい。',
+	'SILVER参考書213Pを参照'));
+	pushChoice('postupgrd.sql', false);
+	pushChoice('utlrp.sql', false);
+	pushChoice('utlu121s.sql', true);
+	pushChoice('utlu121i.sql', false);
+	sortChoice();
+	
+	// 300
+	q_list.push(new Question('GUIモードで実行しているDBUAにおいて設定できるものを選択しなさい。',
+	'SILVER参考書214Pを参照'));
+	pushChoice('前提条件エラーのうち修正可能なものは、修正スクリプトを生成して適用できる', false);
+	pushChoice('アップグレード中の並列度を指定し、パラレルにアップグレードを行うことができる', true);
+	pushChoice('アップグレード前後のバックアップを取得することができる', false);
+	pushChoice('アップグレードの一部として高速リカバリ領域は移動できないが、データベースファイルの移動を行うことができる', false);
+	sortChoice();
+	
+	// 301
+	q_list.push(new Question('DBUAを使用して、Oracle Database 11.2から12cにアップグレードしたデータベースがあります。'
+	+ '\nSYSBACKUPやSYSDG特権ユーザーオプションを使用して接続する際、ローカル接続はできますが、Oracle Netを使用したリモート接続ができないという報告がありました。'
+	+ '\n解決方法として適切なものを2つ選択しなさい。',
+	'SILVER参考書216Pを参照'));
+	pushChoice('データベースの再起動が行われるまで反映されていないだけなので、再起動を行う', false);
+	pushChoice('パスワードの変更が行われるまで反映されないため、パスワードを変更する', false);
+	pushChoice('GRANT文を使用して該当する特権ユーザーをパスワードファイルに登録する', true);
+	pushChoice('アップグレード直後は最小限のパスワードファイルのため、該当する特権ユーザーを有効にしたパスワードファイルとして再作成する', true);
+	sortChoice();
+	
+	// 302
+	q_list.push(new Question('データベースのアップグレード後の確認方法として適切なものを2つ選択しなさい。',
+	'SILVER参考書217Pを参照'));
+	pushChoice('DBA_REGISTRYビューでコンポーネントのアップグレード後のステータスを確認する', true);
+	pushChoice('utluiobj.sqlスクリプトを使用して、無効なオブジェクトが存在しないことを確認する', true);
+	pushChoice('postupgrade_fixups.sqlスクリプトを使用して、アカウントロックされたユーザーを確認する', false);
+	sortChoice();
+	
+	// 303
+	q_list.push(new Question('Oracle Grid Infrastructureホームを11.2から12cにアップグレードしました。'
+	+ '\nデータベースのパスワードファイルをディスクグループに作成しようとしたところ、次のようなエラーが発生します。'
+	+ '\n'
+	+ '\n$ orapwd file="+FRA/ORCL/orapworcl" dbuniquename="orcl"'
+	+ '\n'
+	+ '\nEnter password forSYS:'
+	+ '\n'
+	+ '\nOPW-00010: パスワード・ファイルが作成できませんでした。'
+	+ '\n'
+	+ '\n原因として適切なものを選択しなさい。',
+	'SILVER参考書219Pを参照'));
+	pushChoice('ASMディスクグループのASM互換性が12.1以上である必要がある', true);
+	pushChoice('ASMディスクグループのASM互換性がRDBMS互換性より小さい必要がある', false);
+	pushChoice('ASMディスクグループのRDBMS互換性属性が12.1以上である必要がある', false);
+	pushChoice('ASMディスクグループにパスワードファイルを格納する機能は存在しない', false);
+	sortChoice();
+	
+	// 304
+	q_list.push(new Question('Oracle Database 11.2のデータベースを12cにアップグレードしたPRODデータベースがあります。'
+	+ '\n同じマシンには、アップグレード前にテスト用に作成した12cのTEST1データベースがあります。'
+	+ '\nPRODデータベースのアップグレードにはDBUAを使用し、Oracle Enterprise Manager Expressも構成しました。'
+	+ '\n'
+	+ '\nSQL> connect system@prod'
+	+ '\n'
+	+ '\nSQL> SELECT DBMS_XDB_CONFIG.getHTTPPort FROM dual;'
+	+ '\n'
+	+ '\nGETHTTPPORT'
+	+ '\n-----------'
+	+ '\n       5500'
+	+ '\n'
+	+ '\nSQL> connect system@test1'
+	+ '\n'
+	+ '\nSQL> SELECT DBMS_XDB_CONFIG.getHTTPPort FROM dual;'
+	+ '\n'
+	+ '\nGETHTTPPORT'
+	+ '\n-----------'
+	+ '\n       5500'
+	+ '\n'
+	+ '\nPRODデータベースのDatabase Expressに接続しようとしたところ、エラーになります。'
+	+ '\n解決方法として適切なものを選択しなさい。',
+	'SILVER参考書220Pを参照'));
+	pushChoice('リスナーを再起動する', false);
+	pushChoice('HTTPではなくHTTPSに変更する', false);
+	pushChoice('いずれかのデータベースでDatabase Expressポートを変更する', true);
+	pushChoice('同一マシンに複数のEnterprise Manager Database Expressは構成できないため、いずれかのデータベースのDatabase Expressポートを解除する', false);
+	sortChoice();
+	
+	// 305
+	q_list.push(new Question('DBUAを使用せずにデータベースのアップグレード後、次のコマンドを実行するタイミングとして適切なものを選択しなさい。'
+	+ '\n'
+	+ '\nSQL> @postupgrade_fixups.sql',
+	'SILVER参考書221Pを参照'));
+	pushChoice('固定オブジェクト統計情報の収集の推奨がアップグレード後2週間以内のため、できるだけ早く実行することが望ましい', true);
+	pushChoice('ディクショナリ統計の収集は定期的に行うことが推奨されるため、定期的に実行することが望ましい', false);
+	pushChoice('タイムゾーンファイルの更新が含まれるため、アップグレード直前に実行することが望ましい', false);
+	sortChoice();
+	
+	// 306
+	q_list.push(new Question('マルチテナントで作成したデータベースに空のPDBを作成し、Oracle Database 11gの非CDBで作成したSHスキーマのエクスポートファイルがあります。'
+	+ '\nPDBにSHスキーマをインポートする手順として適切なものを選択しなさい。',
+	'SILVER参考書222Pを参照'));
+	pushChoice('PDBではトランスポータブル表領域のみサポートされているため、スキーマ単位でのインポートはエラーとなる', false);
+	pushChoice('PDBへの接続をOracle Net経由とすることで、非CDB同様にインポートすることができる', true);
+	pushChoice('PDBからソースデータベースに接続するデータベースリンクを作成後、インポートすることができる', false);
+	pushChoice('PDBに直接インポートすることができないため、CDBにインポートを行い、PDBにデータをコピーする', false);
+	sortChoice();
 }());
 
 (function(){
