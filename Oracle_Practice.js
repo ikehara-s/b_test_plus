@@ -2285,7 +2285,7 @@ function sortQuestion(){
 	+ '\n'
 	+ '\nNAME                  TYPE        VALUE'
 	+ '\n--------------------- ----------- ---------------------'
-	+ '\npdb_file_name_dest    string      /disk1'
+	+ '\ndb_file_name_dest    string      /disk1'
 	+ '\n'
 	+ '\nSQL> CREATE DATABASE cdb2 ENABLE PLUGGABLE DATABASE'
 	+ '\n  2  SEED FILE_NAME_CONVERT=("/disk1/", "/disk3/");'
