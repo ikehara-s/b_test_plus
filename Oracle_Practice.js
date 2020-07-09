@@ -4209,6 +4209,130 @@ function sortQuestion(){
 	pushChoice('A: 読み取り専用 B: SQL*Loader C: 読み書き可能', false);
 	pushChoice('A: オフライン B: SQL*Loader C: オンライン', false);
 	sortChoice();
+	
+	// 326
+	q_list.push(new Question('"CREATE DATABASE” 文に "ENABLE PLUGGABLE DATABASE" 句を指定することによる結果は、次のどれですか？',
+	'CREATE DATABASE ... ENABLE PLUGGABLE DATABASE SQL 文で新規の CDB を作成します。'
+	+ '\nENABLE PLUGGABLE DATABASE 句を指定しない場合、新規に作成されたデータベースは非 CDB で、PDB を含めることはできません。'));
+	pushChoice('ルートがオープンされ、シードが読取り専用の CDB が作成される。', true);
+	pushChoice('ルートがオープンされ、シードがマウントされた CDB が作成される。', false);
+	pushChoice('ルートとシードがオープンされ、PDB の 1 つがマウントされた CDB が作成される。', false);
+	pushChoice('既存の CDB にプラグしなければならない CDB が作成される。', false);
+	pushChoice('ルートのみがオープンされたマルチテナント・コンテナ・データベース (CDB) が作成される。', false);
+	sortChoice();
+	
+	// 327
+	q_list.push(new Question('あなたは、SQL* Plus を使用し、SYSDBA 権限でマルチテナント・コンテナ・データベース (CDB) に接続し、以下のシーケンス文を実行しました。'
+	+ '\n'
+	+ '\nSQL> CREATE PLUGGABLE DATABASE NEW_PDB ADMIN USER PDB_ADMIN IDENTIFIED BY SECRET;'
+	+ '\nPluggable database created.'
+	+ '\n'
+	+ '\nSQL> ALTER PLUGGABLE DATABASE NEW_PDB OPEN;'
+	+ '\nPluggable database altered.'
+	+ '\nSQL> ALTER SESSION SET CONTAINER = NEN_PDB;'
+	+ '\nSession altered.'
+	+ '\nSQL> GRANT CONNECT TO PDB_ADMIN;'
+	+ '\nGrant succeeded.'
+	+ '\nSQL> CONNECT PDB ADMIN/SECRET@LOCALHOST/NEW_PDB'
+	+ '\nConnected.'
+	+ '\nSQL> SELECT * FROM SESSION PRIVS;'
+	+ '\n'
+	+ '\nPRIVILEGE'
+	+ '\n-------------------------------------------------------'
+	+ '\nCREATE SESSION '
+	+ '\nSET CONTAINER'
+	+ '\n'
+	+ '\nSQL> ALTER SESSION SET CONTAINER = PDB$SEED;'
+	+ '\n'
+	+ '\n最後の SET CONTAINER 文の実行結果はどうなりますか？また、それはなぜですか？',
+	''));
+	pushChoice('成功する。理由は、PDB_ADMIN ユーザーに必要な権限があるため。', false);
+	pushChoice('失敗する。理由は、ローカル・ユーザーは SET CONTAINER 文を使用できないため。', true);
+	pushChoice('失敗する。理由は、SET CONTAINER 文にはターゲット・プラガブル・データベース (PDB) として PDB$SEED を使用できないため。', false);
+	pushChoice('失敗する。理由は、共通ユーザーは SET CONTAINER 文を使用できないため。', false);
+	sortChoice();
+	
+	// 328
+	q_list.push(new Question('あなたは、マルチテラバイトの非 CDB を、プラガブル・データベース (PDB) として既存のマルチテナント・コンテナ・データベース (CDB) にプラグしようとしています。'
+	+ '\nこの非 CDB の特徴は次の通りです。'
+	+ '\n'
+	+ '\n- バージョン：Oracle Database 12c Release 1 64-bit'
+	+ '\n- キャラクタ・セット：WE8ISO8859P15'
+	+ '\n- 各国キャラクタ・セット：AL16UTF16'
+	+ '\n- O/S：Oracle Linux 6 64-bit'
+	+ '\n'
+	+ '\nこの CDB の特徴は次の通りです。'
+	+ '\n'
+	+ '\n- バージョン：Oracle Database 12c Release 1 64-bit'
+	+ '\n- キャラクタ・セット：AL32UTF8'
+	+ '\n- O/S：Oracle Linux 6 64-bit'
+	+ '\n'
+	+ '\n非 CDB を CDB にプラグする間、ダウンタイムを最小限に抑えるためには、次のどの手法を使用すればいいですか？',
+	''));
+	pushChoice('トランスポータブル・データベース', false);
+	pushChoice('Data Pump のフル・エクスポート/フル・インポート', false);
+	pushChoice('DBMS_PDB パッケージ', true);
+	pushChoice('トランスポータブル表領域', false);
+	pushChoice('RMAN', false);
+	sortChoice();
+	
+	//329
+	q_list.push(new Question('プラガブル・データベース (PDB) をオープンする方法として有効なものはどれですか？ 3 つ選択してください。',
+	'変更する PDB は、次の方法で指定できます。'
+	+ '\n1つ以上のPDBをリストします。'
+	+ '\nすべての PDB を変更するには、ALL を指定します。'
+	+ '\nリストされた PDB を除くすべての PDB を変更するには、ALL EXCEPT を指定します。'));
+	pushChoice('ALTER PLUGGABLE DATABASE PDB OPEN をシードから発行する。', false);
+	pushChoice('ALTER DATABASE OPEN を PDB から発行する。', true);
+	pushChoice('ALTER DATABASE PDB OPEN をルートから発行する。', false);
+	pushChoice('ALTER PLUGGABLE DATABASE OPEN ALL を PDB から発行する。', false);
+	pushChoice('ALTER PLUGGABLE DATABASE OPEN ALL をルートから発行する。', true);
+	pushChoice('ALTER PLUGGABLE DATABASE PDB OPEN を別の PDB から発行する。', false);
+	pushChoice('ALTER PLUGGABLE DATABASE OPEN を PDB から発行する。', true);
+	sortChoice();
+	
+	// 330
+	q_list.push(new Question('管理対象のマルチテナント・コンテナ・データベース CDB1 (ARCHIVELOG モードで稼働中) には、HR_PDB とACCOUNTS_PDB という 2 つのプラガブル・データベースが含まれています。'
+	+ '\nこのデータベースについては、RMAN を利用したバックアップがあります。'
+	+ '\nあなたは、ACCOUNTS_PDB をオープンするコマンドを発行したところ、ACCOUNTS_PDB に属するデフォルトの永続表領域 USERDATA のデータファイル USERDATA.DBF が破損していることを発見しました。'
+	+ '\nACCOUNTS_PDB 内のデータファイルをリストアおよびリカバリするためのコマンドを実行する前に、何をすべきですか？',
+	'オンラインの表領域をオフライン化すると、一般的な使用を一時的に禁止にできます。'
+	+ '\nデータベースの残りの部分はオープンしていて使用可能であり、ユーザーはデータにアクセスできます。'
+	+ '\n逆に、オフライン状態の表領域をオンライン化して、データベース・ユーザーがその表領域内のスキーマ・オブジェクトを使用できるようにすることもできます。'
+	+ '\n表領域の可用性を変更するには、データベースをオープンする必要があります。'));
+	pushChoice('CDB1 をマウント状態にした後、ACCOUNTS_PDB の USERDATA 表領域をオフラインにする。', false);
+	pushChoice('ALTER PLUGGABLE DATABASE accounts_pdb RESTRICTED コマンドを発行する。', false);
+	pushChoice('ACCOUNTS_PDB の USERDATA 表領域をオフラインにする。', true);
+	pushChoice('CDB1 をマウント状態にして、ALTER PLUGGABLE DATABASE accounts_pdb CLOSE IMMEDIATE コマンドを発行する。', false);
+	sortChoice();
+	
+	// 331
+	q_list.push(new Question('管理対象のマルチテナント・コンテナ・データベース (CDB) は ARCHIVELOG モードで稼働しています。あなたは、この CBB の RMAN に接続しました。'
+	+ '\n以下のコマンドと出力を見てください。'
+	+ '\n'
+	+ '\nRMAN> SELECT con_id, name, open_mode FROM V$PDBS;'
+	+ '\n  CON_ID    NAME      OPEN_MODE'
+	+ '\n----------------- ----------------------- ----------------'
+	+ '\n  2   PDB$SEED    READ ONLY'
+	+ '\n  3   PDB2_1      MOUNTED'
+	+ '\n  4   PDB2_2      MOUNTED'
+	+ '\n'
+	+ '\n次のコマンドを実行しました。'
+	+ '\n'
+	+ '\nRMAN > BACKUP DATABASE PLUS ARCHIVELOG;'
+	+ '\n'
+	+ '\nバックアップされるのは、次のどのデータ・ファイルですか？',
+	'CDB 全体のバックアップは、非CDB のバックアップと同様です。'
+	+ '\nCDB 全体をバックアップすると、RMAN は root、すべての PDB、およびアーカイブ REDO ログをバックアップします。'
+	+ '\nその後、CDB のバックアップから、CDB 全体、root のみ、または 1 つ以上の PDB をリカバリすることができます。'));
+	pushChoice('ルート・コンテナと PDB$SEED 以外のすべての PDB に属するデータ・ファイル', false);
+	pushChoice('ルート・コンテナと PDB$SEED のみに属するデータ・ファイル', false);
+	pushChoice('ルート・コンテナとすべてのプラガブル・データベース (PDB) に属するデータ・ファイル', false);
+	pushChoice('ルート・コンテナ のみに属するデータ・ファイル', false);
+	sortChoice();
+	
+	// 332
+	
 }());
 
 (function(){
