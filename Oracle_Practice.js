@@ -3442,6 +3442,45 @@ function sortQuestion(){
 	pushChoice('デフォルトでユーザーの初期コンシューマグループとしてOTHER_GROUPSが設定されている', false);
 	pushChoice('SYSユーザーのみ、デフォルトで初期コンシューマグループとしてSYS_GROUPグループが設定されている', false);
 	sortChoice();
+	
+	// 261
+	q_list.push(new Question('リソースプランの有効化に関する説明として正しいものを選択しなさい。',
+	'SILVER参考書162Pを参照'));
+	pushChoice('リソースプランの変更を有効にするにはインスタンスを再起動する必要がある', false);
+	pushChoice('RESOURCE_MANAGER_PLAN初期化パラメータをインスタンスレベルで変更する', true);
+	pushChoice('存在しないリソースプランで変更しようとすると無視され、デフォルトのプランが有効になる', false);
+	pushChoice('リソースプランの未設定時は、DEFAULT_PLANがアクティブになる', false);
+	sortChoice();
+	
+	// 262
+	q_list.push(new Question('リソースマネージャを使用することで可能な処理として正しいものを2つ選択しなさい。',
+	'SILVER参考書163Pを参照'));
+	pushChoice('しきい値を超えると自動でコンシューマグループを切り替え、処理後にグループを戻すことができる', true);
+	pushChoice('ブロッキング状態のセッションで原因となったSQL文をエラーにすることができる', false);
+	pushChoice('プランに含まれているグループのセッションが存在しないときに使用するCPU使用量の上限を設定できる', true);
+	pushChoice('各セッションで使用するUNDO使用量に制限を設け、超えたらセッションを切断することができる', false);
+	sortChoice();
+	
+	// 263
+	q_list.push(new Question('リソースマネージャによるインスタンスけーじんぐに必要な構成を2つ選択しなさい。',
+	'SILVER参考書164Pを参照'));
+	pushChoice('CPU_COUNT初期化パラメータ', true);
+	pushChoice('mgmt_p1を使用したCPU使用量のディレクティブ', false);
+	pushChoice('リソースプランの有効化', true);
+	pushChoice('コンシューマグループマッピング', false);
+	sortChoice();
+	
+	// 264
+	q_list.push(new Question('Oracleソフトウェアのインストールに関する説明として適切なものを2つ選択しなさい。',
+	'SILVER参考書175Pを参照'));
+	pushChoice('Oracle Restartを使用するにはGrid Infrastructureを先にインストールする必要がある', false);
+	pushChoice('Oracle Restartを使用する場合、Grid Infrastructureを先にインストールすることが推奨される', true);
+	pushChoice('ASMを使用する場合、Grid Infrastructureが必須である', true);
+	pushChoice('Grid InfrastructureとOracle Databaseは異なるマシンにインストールすることができる', false);
+	sortChoice();
+	
+	// 265
+	
 }());
 
 (function(){
