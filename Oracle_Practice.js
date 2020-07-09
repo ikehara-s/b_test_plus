@@ -4003,6 +4003,212 @@ function sortQuestion(){
 	pushChoice('OHASDが新しいOracleホームから起動される', true);
 	pushChoice('ASMCAを実行するまでASMインスタンスは古いOracleホームから起動される', false);
 	sortChoice();
+	
+	// 310
+	q_list.push(new Question('Recovery Manager以外で、データベースのバックアップファイルを作成できるツールを1つ選択してください。',
+	'DataPumpユーティリティのエクスポートを使用して、データベースの論理バックアップを作成することができます。'));
+	pushChoice('SQL*Plus', false);
+	pushChoice('DataPump', true);
+	pushChoice('SQL*Loader', false);
+	pushChoice('AWR', false);
+	sortChoice();
+	
+	// 311
+	q_list.push(new Question('NOARCHIVELOGモードで運用しているデータベースでリカバリを行います。'
+	+ '\nREDOログファイルが損失しており、REDOログを増分バックアップに適用できない場合、RECOVER DATABASEコマンドに指定するオプションを1つ選択してください。',
+	'NOARCHIVELOGモードは、アーカイブ・ログ・ファイルが生成されないため、データベースのリカバリーは常に実行できるとは限りません。'
+	+ '\nバックアップファイルにログファイルの適用が実行できないケースでも、NOREDOオプションを指定することで、増分バックアップのみを適用することができます。'));
+	pushChoice('RESETLOGS', false);
+	pushChoice('オプションは要らない', false);
+	pushChoice('UNTIL CANCEL', false);
+	pushChoice('NOREDO', true);
+	sortChoice();
+	
+	// 312
+	q_list.push(new Question('RMANで永続設定が可能な構成を3つ選択してください。',
+	'RMANのCONFIGUREコマンドでデバイスの並列度、自動チャネル構成、バックアップピースのサイズ制限などの永続設定を行うことができます。'
+	+ '\nブロック変更トラッキングの有効化・無効化はSQLコマンドで設定します。'));
+	pushChoice('デバイスの並列度', true);
+	pushChoice('自動チャネル構成', true);
+	pushChoice('ブロック変更トラッキングの有効化・無効化', false);
+	pushChoice('バックアップピースのサイズ制限', true);
+	sortChoice();
+	
+	// 313
+	q_list.push(new Question('自動診断リポジトリ（ADR）のADRベースのデフォルト値について、優先順位として正しく並んでいるものはどれですか。1つ選択してください。'
+	+ '\n'
+	+ '\nA. $ORACLE_HOME/log'
+	+ '\nB. ORACLE_BASE環境変数の値'
+	+ '\nC. DIAGNOSTIC_DEST初期化パラメータ',
+	'自動診断リポジトリ（ADR）内には、アラートログやトレースファイルなどのトラブル時の診断に使用するための情報が保存されます。'
+	+ '\nADRベースの場所の優先順位は、DIAGNOSTIC_DEST初期化パラメータ→ORACLE_BASE環境変数の値→$ORACLE_HOME/logの順になります'));
+	pushChoice('C → B → A', true);
+	pushChoice('B → A → C', false);
+	pushChoice(' A → B → C', false);
+	pushChoice('C → A → B', false);
+	sortChoice();
+	
+	// 314
+	q_list.push(new Question('制御ファイルが全損した場合のリカバリ手順について、空欄に入る正しい組み合わせを1つ選択してください。'
+	+ '\n'
+	+ '\nデータベースを [ A ] で起動'
+	+ '\n[ B ] の指定　'
+	+ '\n制御ファイルのリストア'
+	+ '\nデータベースの [ C ]'
+	+ '\nデータベースのリカバリ'
+	+ '\n[ D ] オプションを指定して、データベースをOPEN',
+	'制御ファイルが全損した場合のリカバリ手順は以下の通りです。'
+	+ '\n'
+	+ '\n1.データベースを [NOMOUNT] で起動'
+	+ '\n2.[DBID] の指定'
+	+ '\n3.制御ファイルのリストア'
+	+ '\n4.データベースの [MOUNT]'
+	+ '\n5.データベースのリカバリ'
+	+ '\n6.[RESETLOGS] オプションを指定して、データベースをOPEN'
+	+ '\n'
+	+ '\nDBIDの指定は、フラッシュリカバリ領域以外に制御ファイルの自動バックアップを作成している場合、必要になります。'));
+	pushChoice('A: MOUNT B: DBID C: MOUNT D: RESETLOGS', false);
+	pushChoice('A: MOUNT B: DBID C: MOUNT D: NORED', false);
+	pushChoice('A: NOMOUNT B: DBID C: MOUNT D: RESETLOGS', true);
+	pushChoice('A: NOMOUNT B: SCN C: MOUNT D: RESETLOGS', false);
+	sortChoice();
+	
+	// 315
+	q_list.push(new Question('フラッシュバックドロップを使用して、誤って削除された表を復旧するために必要な前提条件を1つ選択してください。',
+	'フラッシュバックドロップ操作でdropした表をリストアすることができます。'
+	+ '\nこの機能を使用するためには、ごみ箱を有効化（RECYCLEBINパラメータ=ON(デフォルト)）しておく必要があります。'));
+	pushChoice('ARCHIVELOGモードに設定', false);
+	pushChoice('自動UNDO管理で運用', false);
+	pushChoice('対象の表で、行の移動を有効化', false);
+	pushChoice('ごみ箱を有効化', true);
+	sortChoice();
+	
+	// 316
+	q_list.push(new Question('フラッシュバック・データベースを使用する場合に行なわなくてはならない手順を3つ選択してください。',
+	'フラッシュバック・データベースを実行すると、データベース全体を過去の状態に戻すことが可能です。'
+	+ '\n使用するためは、ARCHIVELOGモードの設定、フラッシュリカバリ領域を構成（フラッシュデータベース・ログが保存されます）が必要です。'
+	+ '\nDB_FLASHBACK_RETENTION_TARGETパラメータでフラッシュデータベース・ログの保存期間を指定することができます。'));
+	pushChoice('ARCHIVELOGモードに設定', true);
+	pushChoice('自動UNDO管理で運用', false);
+	pushChoice('フラッシュリカバリ領域を構成する', true);
+	pushChoice('DB_FLASHBACK_RETENTION_TARGETパラメータを設定', true);
+	sortChoice();
+	
+	// 317
+	q_list.push(new Question('データベースの転送を行う際に注意しなければならないことを、2つ選択してください。',
+	'データベース転送の前提条件として、ソース・プラットフォームと宛先プラットフォームのエンディアン形式は同じである必要があります。'
+	+ '\nデータベースの転送は以前のversionからも使用可能のため、COMPATIBLEが12.0.0.0以上である必要はありません。'
+	+ '\nデータベースの転送方法は、データファイルをOSコマンドでコピーする方法と、12c新機能であるRMANを使用する方法がありますが、いずれの場合も、パスワードファイルは手動で作成する必要があります。'));
+	pushChoice('COMPATIBLE初期化パラメータが、12.0.0.0以上であること', false);
+	pushChoice('パスワードファイル使用時は手動で作成する', true);
+	pushChoice('ソース・プラットフォームと宛先プラットフォームのエンディアン形式', true);
+	pushChoice(' 同じプラットフォームの場合、データファイルをそのままコピーする', false);
+	sortChoice();
+	
+	// 318
+	q_list.push(new Question('Oracle Secure Backupについて、正しく述べているものを2つ選択してください。',
+	'Oracle Secure Backupはテープバックアップアップ用のOracleソフトウエアです。'
+	+ '\nファイルシステム上にバックアップを取る以外に、テープ媒体にもバックアップを保存することでデータ保護を強化することができます。'
+	+ '\nOracle Secure BackupはRMANと統合されています。SBTインタフェースを使用してテープ上にバックアップを作成することができます。'));
+	pushChoice('ファイル・システムをテープにバックアップすることによって信頼性の高い安全なデータ保護を提供するメディア・マネージャ', true);
+	pushChoice('データベースのバックアップおよびリカバリのアルゴリズムに関する専用の機能も備えている', false);
+	pushChoice('ファイル・システムをディスクにバックアップすることによって信頼性の高い安全なデータ保護を提供するメディア・マネージャ', false);
+	pushChoice('SBTインタフェースを介してRMANのメディア管理レイヤーとして機能できる', true);
+	sortChoice();
+	
+	// 319
+	q_list.push(new Question('Recovery ManagerのBACKUPコマンドで、次のオプションを設定しました。設定される多重化レベルを1つ選択してください。'
+	+ '\n'
+	+ '\nチャネルに割り当てられた実ファイル数 ： 3'
+	+ '\nFILESPERSETパラメータ ： 4'
+	+ '\nMAXOPENFILESパラメータ　：5',
+	'RMANのバックアップセットは、複数のファイルをまとめて1つのセットとして作成します。'
+	+ '\n1つのセットに含めるファイル数を多重化レベルと呼んでいます。'
+	+ '\nMAXOPENFILESパラメータは、1つのチャネルでアクセスする最大ファイル数、FILESPERSETパラメータは１つのバックアップセット内に含める最大ファイル数です。'
+	+ '\nこの問題では、チャネルに割り当てられた実ファイル数が3つのため、多重化レベルは3になります。'));
+	pushChoice('3', true);
+	pushChoice('4', false);
+	pushChoice('5', false);
+	pushChoice('9', false);
+	sortChoice();
+	
+	// 320
+	q_list.push(new Question('ALTER SESSION SET CONTAINER文に関しての説明で、正しいものを1つ選択して下さい。',
+	'PDBの切り替えが可能なのは共通ユーザのみです。'
+	+ '\nSET CONTAINERシステム権限が付与された共通ユーザーは、ALTER SESSION SET CONTAINER文で接続するPDBを切り替えることができます。'));
+	pushChoice('システム権限 SET CONTAINERが付与されたローカルユーザのみ使用できる', false);
+	pushChoice('システム権限 SET CONTAINERが付与された共通ユーザのみ使用できる', true);
+	pushChoice('システム権限 SET CONTAINERが付与されたローカルユーザ、共通ユーザが使用できる', false);
+	pushChoice('AFTER LOGONトリガーが実行される', false);
+	sortChoice();
+	
+	// 321
+	q_list.push(new Question('マルチコンテナ環境で、CDBだけに存在し、PDBには存在しないものを2つ選択してください。',
+	'マルチコンテナ環境では、各PDBに制御ファイルとREDOログファイルが構成はされていません。'
+	+ '\nCDB(rootコンテナ)の制御ファイルとREDOログファイルを全てのPDBで使用します。'
+	+ '\nアーカイブログファイルは、NOARCHIVELOGモードであれば、CDBにも存在しません。'));
+	pushChoice('データファイル', false);
+	pushChoice('REDOログファイル', true);
+	pushChoice('制御ファイル', true);
+	pushChoice('アーカイブ・ログ・ファイル', false);
+	sortChoice();
+	
+	// 322
+	q_list.push(new Question('マルチテナント環境のユーザに関する説明として、正しく述べているものを2つ選択してください。',
+	'マルチテナント環境のユーザーには、全てのコンテナに存在する共通ユーザーと各コンテナにのみ存在するローカルユーザの2種類があります。'
+	+ '\n共通ユーザはルートコンテナでのみ作成可能です。ルートコンテナ内には、ローカルユーザーの作成はできません。'
+	+ '\n共通ユーザーの名前は指定された接頭子（デフォルトはC##）にする必要があります。'
+	+ '\n各コンテナのローカルユーザーは他のコンテナに同じ名前のユーザーが存在していても別のユーザーです。'));
+	pushChoice('ローカルユーザは、すべてのコンテナから作成できる', false);
+	pushChoice('同じ名前と資格証明を持つユーザが複数のPDBに存在する場合、各ローカルユーザはそれぞれ、別のユーザである', true);
+	pushChoice('共有ユーザの名前は、 C## ではじまる名前にしなければならない', true);
+	pushChoice('共通ユーザは、すべてのコンテナから作成できる', false);
+	sortChoice();
+	
+	// 323
+	q_list.push(new Question('マルチテナント環境のインスタンスリカバリについて、正しく述べているものを1つ選択してください。',
+	'マルチテナント環境では、インスタンスはCDBに紐づいています。'
+	+ '\nクラッシュ/インスタンス・リカバリはCDB全体に対してサポートされています。'
+	+ '\n特定のPDBのインスタンスリカバリは不可能です。'));
+	pushChoice('CDB、PDBともに、インスタンスリカバリがサポートされている', false);
+	pushChoice('PDBのみ、インスタンスリカバリがサポートされている', false);
+	pushChoice('CDBのみ、インスタンスリカバリがサポートされている', true);
+	pushChoice('CDB、PDBともに、インスタンスリカバリはサポートされてない', false);
+	sortChoice();
+	
+	// 324
+	q_list.push(new Question('データベースリプレイで取得できないワークロードを3つ選択してください。',
+	'データベースリプレイはワークロードを再実行するためのテスト用ツールです。'
+	+ '\nたとえば、本番環境で処理中のワークロードを取得し、テスト環境でワークロードを再実行(リプレイ)することができます。'
+	+ '\n分散トランザクション、フラッシュバック問い合わせ、SQL以外のオブジェクトへのアクセスはデータベースリプレイでサポートされていない操作です。'));
+	pushChoice('分散トランザクション', true);
+	pushChoice('フラッシュバック問い合わせ', true);
+	pushChoice('専用サーバ接続からのリクエスト', false);
+	pushChoice('SQL以外のオブジェクトへのアクセス', true);
+	sortChoice();
+	
+	// 325
+	q_list.push(new Question('トランスポータブル表領域を実行するための手順について、空欄に入る正しい組み合わせを1つ選択してください。'
+	+ '\n'
+	+ '\n1.転送する表領域を [ A ] にする'
+	+ '\n2.[ B ] を使用して、メタデータをエクスポートする'
+	+ '\n3.データファイルとダンプファイルを、OSコマンドなどで転送する'
+	+ '\n4.[ B ] を使用して、メタデータをインポートする'
+	+ '\n5.表領域を [ C ] にする',
+	'トランスポータブル表領域の機能で表領域を別のOracle Databaseにコピーできます。'
+	+ '\nOracle Database12cのトランスポータブル表領域の操作は、OSコマンドを使用してデータファイルをコピーする方法と、12c新機能であるRMANでコピーする方法の2種類があります。'
+	+ '\nこの問題では、OSコマンドを使用する以下の手順が問われています。'
+	+ '\n'
+	+ '\n1.転送する表領域を　読み取り専用にする'
+	+ '\n2.DataPumpを使用して、メタデータをエクスポートする'
+	+ '\n3.データファイルとダンプファイルを、OSコマンドなどで転送する'
+	+ '\n4.DataPumpを使用して、メタデータをインポートする'
+	+ '\n5.表領域を 読み書き可能にする'));
+	pushChoice('A: オフライン B: DataPump C: オンライン', false);
+	pushChoice('A: 読み取り専用 B: DataPump C: 読み書き可能', true);
+	pushChoice('A: 読み取り専用 B: SQL*Loader C: 読み書き可能', false);
+	pushChoice('A: オフライン B: SQL*Loader C: オンライン', false);
+	sortChoice();
 }());
 
 (function(){
