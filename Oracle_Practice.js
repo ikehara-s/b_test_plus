@@ -3480,6 +3480,68 @@ function sortQuestion(){
 	sortChoice();
 	
 	// 265
+	q_list.push(new Question('Oracle Databaseソフトウェアをインストール前にGrid Infrastructureをスタンドアローンモードでインストールする利点を2つ選択しなさい。',
+	'SILVER参考書176Pを参照'));
+	pushChoice('データベースの起動、停止、再起動の自動化', true);
+	pushChoice('データベースファイルの作成や削除の自動化', false);
+	pushChoice('非クラスタデータベースをクラスタデータベースに変更', false);
+	pushChoice('ブロックデバイスやRAWデバイスを使用させない', true);
+	sortChoice();
+	
+	// 266
+	q_list.push(new Question('次の要件を満たすためにインストールする必要があるソフトウェアを選択しなさい。'
+	+ '\n'
+	+ '\nインスタンス障害時は即時に再起動する'
+	+ '\nRAIDを使用せずにディスクストライプ化とミラー化を行う',
+	'SILVER参考書176Pを参照'));
+	pushChoice('WebLogic Application Server', false);
+	pushChoice('Database Vault', false);
+	pushChoice('Enterprise Manager Cloud Control', false);
+	pushChoice('Grid Infrastracture', true);
+	sortChoice();
+	
+	// 267
+	q_list.push(new Question('Oracle Database 12cのOracle Universal Installerをサイレントモードでインストールする必要があります。'
+	+ '\nレスポンスファイルの準備方法として適切なものを2つ選択しなさい。',
+	'SILVER参考書178Pを参照'));
+	pushChoice('インストールメディア内のテンプレートファイルをカスタマイズする', true);
+	pushChoice('OUIの実行時引数ですべてを渡す必要がある', false);
+	pushChoice('GUIモードで実行した最後のサマリーページで「レスポンスファイルの保存」にて保存しておく', true);
+	pushChoice('GUIモードで起動するときに -record -destinationFileを指定して保存しておく', false);
+	sortChoice();
+	
+	// 268
+	q_list.push(new Question('2つのOracleホームがあり、それぞれのデータベース管理者権限グループを分ける必要があります。'
+	+ '\n対応させる方法として適切なものを選択しなさい。',
+	'SILVER参考書178Pを参照'));
+	pushChoice('同一ハードウェア上のデータベース管理者グループは1つしか持てないため、分けることはできない', false);
+	pushChoice('インベントリ用グループを作成し、プライマリグループとして設定する', true);
+	pushChoice('インベントリグループのみのユーザーを作成し、データベース管理者と分ける', false);
+	pushChoice('すべての管理者グループに属するユーザーでOracleソフトウェアをインストールする', false);
+	sortChoice();
+	
+	// 269
+	q_list.push(new Question('Oracle Linux環境にOracleソフトウェアをインストールするにあたり、Oracle Universal Installerで行うことのできる処理を2つ選択しなさい。',
+	'SILVER参考書179Pを参照'));
+	pushChoice('OSユーザー、OSグループの作成', false);
+	pushChoice('カーネルパラメータやシェル制限などの修正', true);
+	pushChoice('ルートファイルシステムにディレクトリを追加', false);
+	pushChoice('レスポンスファイルの保存', true);
+	sortChoice();
+	
+	// 270
+	q_list.push(new Question('Oracle Database 12.1のOracle Database ソフトウェアをOracle Linux環境にインストールします。'
+	+ '\n事前に作成したOSグループを対応付ける必要のあるOracle権限グループをすべて含むものを選択しなさい。',
+	'SILVER参考書179Pを参照'));
+	pushChoice('OSDBA、OSOPER、OSBACKUP、OSDGDBA、OSKMDBA', false);
+	pushChoice('OSDBA、OSBACKUP、OSDGDBA、OSKMDBA', true);
+	pushChoice('OSDBA、OSOPER、OSBACKUP', false);
+	pushChoice('OSDBA、OSBACKUP', false);
+	pushChoice('OSDBA、OSOPER', false);
+	pushChoice('OSDBA', false);
+	sortChoice();
+	
+	// 271
 	
 }());
 
