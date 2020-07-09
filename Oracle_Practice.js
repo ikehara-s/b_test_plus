@@ -3605,6 +3605,145 @@ function sortQuestion(){
 	pushChoice('SQLやPL/SQLのVARCHAR2型やCHAR型は可変幅の1バイト～4バイトで表現される', true);
 	pushChoice('AL16UTF16をNLS_CHARACTERSETで設定することはできない', true);
 	sortChoice();
+	
+	// 277
+	q_list.push(new Question('Oracle RestartをインストールしているOracle Linux環境において、OS起動後にデータベースが自動起動していないという苦情が発生しています。'
+	+ '\n次の結果から今後の対応として適切なものを選択しなさい。'
+	+ '\n'
+	+ '\n$ ps -ef | grep ohasd'
+	+ '\nroot      9672  7187  0 16:14 pts/0    00:00:00 grep ohasd'
+	+ '\nroot     24131     1  0 15:44 ?        00:00:00 /bin/sh /etc/init.d/init.ohasd run'
+	+ '\n'
+	+ '\n$ cat /etc/oracle/scls_scr/sti01/grid/ohasdstr'
+	+ '\ndisable',
+	'SILVER参考書192Pを参照'));
+	pushChoice('crsctl start hasでOHASDを起動する', false);
+	pushChoice('crsctl enable hasで自動起動を有効化する', true);
+	pushChoice('crsctl config hasで自動起動を有効化する', false);
+	pushChoice('/etc/init.d/init/ohasd startで自動起動を有効化する', false);
+	sortChoice();
+	
+	// 278
+	q_list.push(new Question('次のコマンドを確認してください。'
+	+ '\n'
+	+ '\n$ crsctl stop has'
+	+ '\n'
+	+ '\nコマンドの実行後の状態として適切なものを選択しなさい。',
+	'SILVER参考書193Pを参照'));
+	pushChoice('ohasd.binのみが停止した状態となる', false);
+	pushChoice('Oracle Restartコンポーネントが強制停止され、ohasd.binが停止する', false);
+	pushChoice('Oracle Restartコンポーネントが依存関係に基づき正常停止され、ohasd.binが停止する', true);
+	pushChoice('ohasd.binのみが停止し、OSが停止する', false);
+	sortChoice();
+	
+	// 279
+	q_list.push(new Question('Oracle Infrastructureホームのsrvctlコマンドを使用してOracle Restartに登録すべきコンポーネントを4つ選択してください。',
+	'SILVER参考書194Pを参照'));
+	pushChoice('データベースインスタンス', false);
+	pushChoice('ASMインスタンス', true);
+	pushChoice('ディスクグループ', true);
+	pushChoice('データベースサービス', false);
+	pushChoice('Oracle Netリスナー', true);
+	pushChoice('Oracle Notification Services(ONS)', true);
+	sortChoice();
+	
+	// 280
+	q_list.push(new Question('Oracle Restartから自動的に構成削除される操作を2つ選択しなさい。',
+	'SILVER参考書195Pを参照'));
+	pushChoice('NETCAを使用したリスナーの削除', true);
+	pushChoice('Net Managerを使用したリスナーの削除', false);
+	pushChoice('SRVCTLを使用したデータベースサービスの削除', true);
+	pushChoice('SERVICE_NAMES初期化パラメータの変更によるデータベースサービスの削除', false);
+	pushChoice('DBMS_SERVICE.DELETE_SERVICEプロシージャによるデータベースサービスの削除', false);
+	sortChoice();
+	
+	//281
+	q_list.push(new Question('次のコマンドに関する説明として正しいものを2つ選択しなさい。'
+	+ '\n'
+	+ '\nsrvctl start home -oraclehome /u01/app/oracle/product/12.1.0/dbhome_1'
+	+ '\n-statefile /home/oracle/dbhome1.dmp',
+	'SILVER参考書195Pを参照'));
+	pushChoice('/home/oracle/dbhome1.dmpは、事前にsrvctl stop homeまたはsrvctl status homeコマンドで作成しておく必要がある', true);
+	pushChoice('/home/oracle/dbhome1.dmpは、事前にからのファイルとして作成しておく必要がある', false);
+	pushChoice('/u01/app/oracle/product/12.1.0/dbhome_1配下で動作するコンポーネントがすべて対象となる', false);
+	pushChoice('/u01/app/oracle/product/12.1.0/dbhome_1配下で動作し、/home/oracle/dbhome1.bmpに保存されたコンポーネントすべてが対象となる', true);
+	sortChoice();
+	
+	// 282
+	q_list.push(new Question('orclデータベースは、DATAディスクグループに格納されています。'
+	+ '\n次のコマンドを実行した結果として適切なものを選択しなさい。'
+	+ '\n'
+	+ '\n$ srvctl stop diskgroup -diskgroup DATA',
+	'SILVER参考書196Pを参照'));
+	pushChoice('DATAディスクグループの停止は失敗するが、orclデータベースは停止される', false);
+	pushChoice('DATAディスクグループの停止に失敗し、orclデータベースはオープンしたままとなる', true);
+	pushChoice('orclデータベースが停止されたのち、DATAディスクグループが停止される', false);
+	pushChoice('orclデータベースはオープンされたまま、DATAディスクグループが停止される', false);
+	sortChoice();
+	
+	// 283
+	q_list.push(new Question('次のコマンドの結果に関する説明として正しいものを選択しなさい。'
+	+ '\n'
+	+ '\n$ srvctl status database -db orcl'
+	+ '\nデータベースは実行中です。',
+	'SILVER参考書197Pを参照'));
+	pushChoice('監視は有効であるが、インスタンスが起動しているかどうかは不明', false);
+	pushChoice('監視は有効であるが、データベースがオープンしているかどうかは不明', false);
+	pushChoice('インスタンスが起動しているが、データベースがオープンしているかどうかは不明', true);
+	pushChoice('インスタンスが起動し、データベースがオープンしている', false);
+	sortChoice();
+	
+	// 284
+	q_list.push(new Question('TNS_ADMIN環境変数を使用してデフォルト以外のlistener.oraファイルを読み込んで起動するOracle Netリスナーがあります。'
+	+ '\nOracle Restartを使用して管理したい場合に、適切な方法を選択しなさい。',
+	'SILVER参考書198Pを参照'));
+	pushChoice('Oracle Restart構成に環境変数を追加することはできない', false);
+	pushChoice('Oracle Restartのラッパースクリプトに環境変数を追加する', false);
+	pushChoice('NETCAでリスナーを登録する際に保存するlistener.oraファイルを指定する', false);
+	pushChoice('srvctl setenv listenerコマンドを使用して環境変数を設定する', true);
+	sortChoice();
+	
+	// 285
+	q_list.push(new Question('次のコマンドに関する説明として正しいものを2つ選択しなさい。'
+	+ '\n'
+	+ '\n$ srvctl add service -db cdb1 -service pdb1serv -pdb pdb1',
+	'SILVER参考書198Pを参照'));
+	pushChoice('cdb1コンテナデータベースとpdb1プラガブルデータベース、pdb1servサービスの追加が行われる', false);
+	pushChoice('cdb1データベースのOracleホーム配下のsrvctlを使用する必要がある', true);
+	pushChoice('pdb1プラガブルデータベースに接続するためのpdb1servサービスが追加される', true);
+	pushChoice('-pdb pdb1を指定しない場合、すべてのPDBに同じサービス名が追加される', false);
+	sortChoice();
+	
+	// 286
+	q_list.push(new Question('現在、ASMインスタンスとデータベースインスタンスが停止していることが確認されています。'
+	+ '\nデータベースはDBCAを使ってASM記憶域で作成しています。'
+	+ '\n次のコマンドの結果として正しいものを選択しなさい。'
+	+ '\n'
+	+ '\n$ srvctl start database -db orcl -startoption mount',
+	'SILVER参考書199Pを参照'));
+	pushChoice('ASMインスタンスが起動していないためエラーとなる', false);
+	pushChoice('ASMインスタンスは起動するが、ASMディスクグループはマウントできないためエラーとなる', false);
+	pushChoice('ASMインスタンスの起動とASMディスクグループのマウント、ASMリスナーの起動、データベースのマウントが行われる', true);
+	pushChoice('ASMを使用せずにデータベースがマウントされる', false);
+	sortChoice();
+	
+	// 287
+	q_list.push(new Question('Oracle Restartを使用する目的として正しいものを2つ選択しなさい。',
+	'SILVER参考書201Pを参照'));
+	pushChoice('障害発生時に別のデータベースへの自動フェイルオーバーを行う', false);
+	pushChoice('スタンドアロン環境とOracle Real Application Cluster(RAC)環境における高可用性ソリューションを提供する', false);
+	pushChoice('コンポーネントの依存関係に基づく適切な順序での起動と停止を提供する', true);
+	pushChoice('データベース、Oracle Netリスナーの自動監視を行う', true);
+	sortChoice();
+	
+	// 288
+	q_list.push(new Question('Oracle Restartに関する説明として正しいものを選択しなさい。',
+	'SILVER参考書202Pを参照'));
+	pushChoice('特定の時点までのロールバックを提供', false);
+	pushChoice('チェック操作を定期的に実行してコンポーネント状態を監視', true);
+	pushChoice('領域不足時に一時停止し、領域不足が解消すると再開', false);
+	pushChoice('災害時に別のサイトにフェイルオーバーを提供する', false);
+	sortChoice();
 }());
 
 (function(){
