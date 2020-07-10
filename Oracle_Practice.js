@@ -5349,6 +5349,155 @@ function sortQuestion(){
 	pushChoice('データベースがオープン状態のときのオンラインREDOログファイル', false);
 	pushChoice('データベースがMOUNT状態のときのPFILEとパスワードファイル', false);
 	sortChoice();
+	
+	// 391
+	q_list.push(new Question('Recovery Manager（RMAN）でリカバリカタログを使用する理由として正しいものを3つ選択しなさい。',
+	''));
+	pushChoice('指定した期間が経過した後に古いバックアップを自動的に削除します', false);
+	pushChoice('複数のデータベースのバックアップ情報を一箇所に保存します', true);
+	pushChoice('バックアップで使用される容量を制限します', false);
+	pushChoice('リカバリカタログに登録されているターゲットデータベースに接続できるすべてのRMANクライアントが利用できるRMANスクリプトを格納します。', true);
+	pushChoice('KEEP FOREVER句を使用してバックアップを無期限に維持します', true);
+	sortChoice();
+	
+	// 392
+	q_list.push(new Question('データベースは、複雑なクエリの実行を伴う意思決定支援システム（DSS）ワークロードをサポートしています。'
+	+ '\n現在、データベースはピークワークロードで稼働しています。'
+	+ '\nライブラリキャッシュにキャッシュされている、最もリソースを消費するステートメントのいくつかを分析したいとします。'
+	+ '\nクエリのパフォーマンスを向上させるためにインデックスとマテリアライズドビューを効率的に使用するための推奨事項を受け取るには、何を実行する必要がありますか？',
+	''));
+	pushChoice('SQLパフォーマンスアナライザ', false);
+	pushChoice('SQLアクセスアドバイザ', true);
+	pushChoice('SQLチューニングアドバイザ', false);
+	pushChoice('自動ワークロードリポジトリ（AWR）レポート', false);
+	pushChoice('自動データベース診断モニター（ADDM）', false);
+	sortChoice();
+	
+	// 393
+	q_list.push(new Question('データベースはnoarchivelogモードで実行されています。'
+	+ '\nシステム表領域に属するデータファイルの1つが破損しています。'
+	+ '\n最後のバックアップ以降、オンラインREDOログはすべて上書きされています。'
+	+ '\nデータファイルを回復するためにどの方法を使用しますか？',
+	''));
+	pushChoice('まだシャットダウンされていない場合はインスタンスをシャットダウンし、最後のバックアップからシステム表領域に属する破損したデータファイルを復元し、インスタンスを再起動します。', false);
+	pushChoice('まだシャットダウンしていない場合はインスタンスをシャットダウンし、最後のバックアップからデータベース全体のすべてのデータファイルを復元して、インスタンスを再起動します。', true);
+	pushChoice('データベースをマウントし、最後のバックアップからシステムテーブルスペースに属するすべてのデータファイルを復元し、データベースを開きます。', false);
+	pushChoice('まだ停止していない場合はインスタンスを停止し、最後のバックアップからシステム表領域に属するすべてのデータファイルを復元して、インスタンスを再起動します。', false);
+	sortChoice();
+	
+	// 394
+	q_list.push(new Question('RMANコマンドを調べます。'
+	+ '\n'
+	+ '\nRMAN> RUN {'
+	+ '\n    ALLOCATE CHANNEL c1 DEVICE TYPE SBT;'
+	+ '\n    ALLOCATE CHANNEL c2 DEVICE TYPE SBT;'
+	+ '\n    ALLOCATE CHANNEL c3 DEVICE TYPE SBT;'
+	+ '\n    BACKUP'
+	+ '\n    INCREMENTAL LEVEL = 0'
+	+ '\n  (DATAFILE 1,4,5 CHANNEL c1)'
+	+ '\n  (DATAFILE 2,3,9 CHANNEL c2)'
+	+ '\n  (DATAFILE 6,7,8 CHANNEL c3);'
+	+ '\n  SQL "ALTER SYSTEM ARCHIVE LOG CURRENT";'
+	+ '\n}'
+	+ '\n'
+	+ '\nコマンドについて正しい説明を選択しなさい。',
+	''));
+	pushChoice('圧縮バックアップセットを作成します。', false);
+	pushChoice('バックアップに非同期I / Oを使用します。', false);
+	pushChoice('バックアップセットに並列化を使用します。', true);
+	pushChoice('マルチセクションバックアップを使用します。', false);
+	sortChoice();
+	
+	// 395
+	q_list.push(new Question('電気通信会社は、電話の時間の順にリストされた顧客の電話の詳細を含む毎月の請求書を生成したいと考えています。'
+	+ '\nどのテーブル構成が、最も少ないコストで請求書を生成できますか。',
+	''));
+	pushChoice('ROWID列を持つヒープテーブル', false);
+	pushChoice('ハッシュクラスタ', false);
+	pushChoice('パーティションテーブル', false);
+	pushChoice('インデックスクラスタ', false);
+	pushChoice('ソートされたハッシュクラスタ', true);
+	sortChoice();
+	
+	// 396
+	q_list.push(new Question('本番データベースはarchivelogモードで稼働しています。'
+	+ '\nデータベースをメディアにバックアップするには、リカバリ・カタログとともにRMANを使用します。'
+	+ '\nデータベースはリカバリ・カタログ内で一意に識別されます。'
+	+ '\n本番データベースからテストデータベースを作成し、複製プロセス中も本番データベースを開いたままにします。'
+	+ '\n本番データベースと同じディレクトリ構造を持つ新しいホストにデータベースのバックアップを復元し、データベースが新しいホストに正常に復元された後の将来のバックアップにリカバリカタログを使用するとします。'
+	+ '\nどのようにこれを達成しますか？',
+	''));
+	pushChoice('RMAN SWITCHコマンドを使用してデータファイルの新しい場所を設定します。', false);
+	pushChoice('DBIDを指定したRMAN DUPLICATEコマンドとSET NEWNAME FOR TABLESPACEを使用してデータベースを新しいホストにリカバリします。', false);
+	pushChoice('新しいホストに新しいデータベースを作成し、次にRMAN RECOVERコマンドを使用します。', false);
+	pushChoice('NOFILENAMECHECKを指定したRMAN DUPLICATEコマンドを使用してデータベースを新しいホストにリカバリします。', true);
+	sortChoice();
+	
+	// 397
+	q_list.push(new Question('UNIXベースのOracle 12cデータベースでマルチスレッドを有効にするには、Oracleの所有者としてSQL * Plusでコマンドを発行します。'
+	+ '\n'
+	+ '\nCONNECT / AS SYSDBA'
+	+ '\nALTER SYSTEM SET THREADED_EXECUTION = TRUE SCOPE = SPFILE;'
+	+ '\nSHUTDOWN;'
+	+ '\n'
+	+ '\nその後、インスタンスを再起動するとエラーが発生します。'
+	+ '\n'
+	+ '\nSTARTUP;'
+	+ '\nORA-01031：権限が不十分です。'
+	+ '\n'
+	+ '\n起動コマンドが表示されるエラーを返すのはなぜですか？',
+	''));
+	pushChoice('スレッドアーキテクチャでは、起動コマンドを発行する前にリスナーを介してインスタンスに接続する必要があるため', false);
+	pushChoice('スレッド化アーキテクチャでは、起動コマンドを発行する前に、sql * plusからsysdbaとして新しいconnect /を発行する必要があるため', false);
+	pushChoice('スレッド化アーキテクチャでは、起動コマンドを発行する前に、sql * plusを終了し、sysdbaとしてsql * Plus /に再接続する必要があるため', false);
+	pushChoice('スレッド化アーキテクチャでは、起動コマンドを発行する前にパスワードファイルを使用した認証が必要なため', true);
+	pushChoice('スレッド化アーキテクチャでは起動コマンドを発行する前にリスナーを再起動する必要があるため', false);
+	sortChoice();
+	
+	// 398
+	q_list.push(new Question('LDAP_DIRECTORY_SYSAUTHがYESに設定されています。'
+	+ '\nDBAアクセスを必要とするユーザーには、Oracle Internet Directory（OID）におけるsysdbaエンタープライズロールが付与されています。'
+	+ '\nデータベースとOIDにSSLが設定され、データベースにパスワードファイルが設定されています。'
+	+ '\nsysdba特権を持つユーザーscottは、次のコマンドを使用してリモート接続を試みます。'
+	+ '\n$ sqlplus scott / tiger @ DB01 sysdbaとして、DB01はネットサービス名です。'
+	+ '\nどの認証方法が最初に試行されますか？',
+	''));
+	pushChoice('パスワードファイルによる認証', false);
+	pushChoice('SSLを介した証明書による認証', false);
+	pushChoice('Oracle Internet Directoryを使用した認証', false);
+	pushChoice('データベースサーバのローカルOSを使用した認証', false);
+	sortChoice();
+	
+	// 399
+	q_list.push(new Question('デフォルトのフラッシュバック・データ・アーカイブFLA1を作成し、それをHRスキーマのEMPLOYEES表に対して使用可能にします。'
+	+ '\n数日後、次のコマンドを実行してEMPLOYEESテーブルを変更します。'
+	+ '\n'
+	+ '\nSQL> ALTER TABLE EMPLOYEES ADD phone NUMBER（12);'
+	+ '\n'
+	+ '\nコマンドについて正しい説明を選択しなさい。',
+	''));
+	pushChoice('正常に実行され、EMPLOYEESテーブルに関連したメタデータの格納が続行されます。', true);
+	pushChoice('正常に実行されましたが、EMPLOYEES表のフラッシュバック・データ・アーカイブは無効です。', false);
+	pushChoice('正常に実行され、表定義を変更する前にEMPLOYEES表に関連するすべてのメタデータがFlashback Data Archiveから削除されます。', false);
+	pushChoice('フラッシュバック・データ・アーカイブが有効になっている表に対してDDL文を実行できないため、エラーが発生します。', false);
+	sortChoice();
+	
+	// 400
+	q_list.push(new Question('データベースでは、毎日、レベル1の増分バックアップが取られます。'
+	+ '\n火曜日のバックアップ実行前に、新しい表領域を追加した後、下のコマンドを実行しました。'
+	+ '\n'
+	+ '\nRMAN> BACKUP INCREMENTAL LEVEL 1 FOR RECOVER OF COPY TAG WEEKLY;'
+	+ '\n'
+	+ '\nコマンドについて正しい説明を選択しなさい。',
+	''));
+	pushChoice('新しいデータファイルに使用できるレベル0のバックアップがないため、エラーを返します。', false);
+	pushChoice('新しいデータファイルのイメージコピーバックアップ、および他のすべてのデータファイルのレベル1の増分バックアップを実行します。', true);
+	pushChoice('新しい表領域に属するものも含め、すべてのデータファイルのレベル0バックアップを実行します。', false);
+	pushChoice('新しい表領域に属するものも含め、すべてのデータファイルのイメージコピーバックアップを実行します。', false);
+	pushChoice('新しい表領域に属するものも含め、すべてのデータファイルのバックアップセットとしてバックアップを実行します。', false);
+	sortChoice();
+	
+	// 401
 }());
 
 (function(){
