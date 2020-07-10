@@ -5289,7 +5289,66 @@ function sortQuestion(){
 	sortChoice();
 	
 	// 387
+	q_list.push(new Question('リカバリ・カタログとターゲット・データベースに接続しています。'
+	+ '\nあなたは次のコマンドを実行しました。'
+	+ '\n'
+	+ '\nRMAN> CATALOG START WITH "/ disk1 / backups";'
+	+ '\n'
+	+ '\n正しい説明を選択しなさい。',
+	'データファイルのコピー、バックアップピース、またはアーカイブログがディスクにある場合は、CATALOGコマンドを使用してそれらをリカバリカタログにカタログできます。'
+	+ '\n次のコマンドは、/ disk1 / backupsがこれらすべてのディレクトリのパスのプレフィックスであるため、これらすべてのディレクトリ内のすべてのファイルをカタログします。'));
+	pushChoice('/ disk1 / backupsディレクトリに存在する有効なデータファイルのコピーのみがカタログされます。', false);
+	pushChoice('/ disk1 / backupsディレクトリにある有効なバックアップピースとアーカイブログのみがカタログされます。', false);
+	pushChoice('/ disk1 / backupsディレクトリおよびそのサブディレクトリのリカバリカタログにカタログされているすべてのデータファイルのコピー、バックアップピース、および達成されたログを一覧表示します。', false);
+	pushChoice('すべてのディレクトリパスに存在するすべての有効なデータファイルのコピー、バックアップファイル、およびアーカイブログを、プレフィックス/ disk1 / backupsとそのサブディレクトリを使用して一覧表示してカタログ化します。', true);
+	sortChoice();
 	
+	// 388
+	q_list.push(new Question('データベースはARCHIVELOGモードで実行されています。データベースインスタンスに設定する予定の初期化パラメータを調べます。'
+	+ '\n'
+	+ '\nLOG_ARCHIVE_DEST_1 = "LOCATION = / disk1 / arch"'
+	+ '\nLOG_ARCHIVE_DEST_2 = "L0CATI0N = / disk2 / arch"'
+	+ '\nLOG_ARCHIVE_DEST_3 = "LOCATION = / disk3 / arch"'
+	+ '\nL0G_ARCHIVE_DEST_4 = "L0CATI0N = / disk4 / arch mndatory"'
+	+ '\n'
+	+ '\nこの結果に対して正しい説明を選択しなさい。',
+	''));
+	pushChoice('これらの設定は、LOG__ARCHIVE_MIN_SUCCEED_DESTが4の値に設定されている場合にのみ機能します。', false);
+	pushChoice('オプションのバックアップ先は高速リカバリ領域を使用できません。', false);
+	pushChoice('LOG_ARCHIVE_DEST_4に指定された場所にアーカイブ・ログ・ファイルを作成できない場合、オンラインREDOログ・ファイルは上書きできません。', true);
+	pushChoice('LOG_ARCHIVE_DEST_1-4のいずれかにアーカイブ・ログ・ファイルを作成できない場合、オンラインREDOログ・ファイルは上書きできません。', false);
+	sortChoice();
+	
+	// 389
+	q_list.push(new Question('ホスト上で稼働している本番用のOracle 12cデータベースがあります。'
+	+ '\nOracleデータベースソフトウェアがインストールされていない複数の新しいマシンにデータベースをインストールして作成するとします。'
+	+ '\nまた、新しいデータベースも既存の12cデータベースと同じディレクトリ構造とコンポーネントを持つようにします。'
+	+ '\n'
+	+ '\n1.すべての新しいマシンに、運用データベースと同様のディレクトリ構造を作成します。'
+	+ '\n2.本番データベースと同じ構成でOracle Universal Installer（OUI）用のレスポンスファイルを作成します。'
+	+ '\n3.データベース用のデータベースクローンテンプレートを作成します。'
+	+ '\n4. Database Configuration Assistant（DBCA）を実行してデータベースを作成します。'
+	+ '\n5.各マシンでOUIをグラフィカルモードで実行します。'
+	+ '\n6. OUIレスポンスファイルを使用して、サイレントモードでOUIを実行します。'
+	+ '\n'
+	+ '\n最も簡単にインストールを行う手順として正しいものを選択しなさい。',
+	''));
+	pushChoice('1、5、4', false);
+	pushChoice('3、1、5、6', false);
+	pushChoice('2、3、1、6', true);
+	pushChoice('2、3、6', false);
+	pushChoice('2、1、6、4', false);
+	sortChoice();
+	
+	// 390
+	q_list.push(new Question('ARCHIVELOGモードのデータベースでRMANを使用してバックアップできるものとして正しい選択肢を2つ選択しなさい。',
+	''));
+	pushChoice('データベースがオープン状態のときのデータファイル', true);
+	pushChoice('データベースがNOMOUNT状態のときのデータファイル', false);
+	pushChoice('前回のバックアップ以降に変更されたデータファイル内のデータブロック', true);
+	pushChoice('データベースがオープン状態のときのオンラインREDOログファイル', false);
+	pushChoice('データベースがMOUNT状態のときのPFILEとパスワードファイル', false);
+	sortChoice();
 }());
 
 (function(){
