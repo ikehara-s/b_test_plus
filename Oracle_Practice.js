@@ -5498,6 +5498,98 @@ function sortQuestion(){
 	sortChoice();
 	
 	// 401
+	q_list.push(new Question('同じ互換性レベル、文字セット、およびエンディアン形式を持つプラットフォーム間で表領域を転送するための考えられる手順のリストを調べます。'
+	+ '\n'
+	+ '\n1.ソースデータベースでテーブルスペースを読み取り専用にします。'
+	+ '\n2.ソースデータベースからメタデータをエクスポートします。'
+	+ '\n3.ターゲットデータベースにメタデータをインポートします。'
+	+ '\n4.ダンプファイルとデータファイルをターゲットマシンに転送します。'
+	+ '\n5. Recovery Manager（RMAN）を使用してデータファイルを変換します。'
+	+ '\n6.ターゲットデータベースでテーブルスペースを読み書き可能にします。'
+	+ '\n'
+	+ '\n正しい手順を選択しなさい。',
+	''));
+	pushChoice('2、4、3', false);
+	pushChoice('2、4、3、5', false);
+	pushChoice('1、5、2、4、3、6', false);
+	pushChoice('1、2、4、3、6', true);
+	sortChoice();
+	
+	// 402
+	q_list.push(new Question('2つのプラガブルデータベース（PDB）、pdb1とpdb2を含むマルチテナントコンテナデータベース（COB）を管理しています。'
+	+ '\nDBA権限を持つ一般ユーザとしてpdb2に接続しています。'
+	+ '\nstatistics_levelパラメータはPDBで変更可能です。'
+	+ '\nユーザーsysとして、pdb2で次のコマンドを実行します。'
+	+ '\n'
+	+ '\nSQL> ALTER SYSTEM SET STATISTICS_LEVEL = ALL SID = "*" SCOPE = SPFILE;'
+	+ '\n'
+	+ '\nこのコマンドの結果について正しい説明はどれですか。',
+	''));
+	pushChoice('statistics_levelパラメータは、PDB2が再度開かれたときにPDB2に対してのみallに設定されます。', true);
+	pushChoice('statistics_levelパラメーターは、いずれかのPDBが再度開かれたときにallに設定されます。', false);
+	pushChoice('statistics_levelパラメータは、ルートデータベースの再起動時にallに設定されています。', false);
+	pushChoice('PDBに対するSPFILEがないため、このステートメントは無視されます。', false);
+	sortChoice();
+	
+	// 403
+	q_list.push(new Question('どのようなタスクが情報ライフサイクル管理（ILM）の自動データ最適化機能によって自動的に実行できますか？'
+	+ '\n正しい選択肢を3つ選んでください。',
+	''));
+	pushChoice('ユーザー表領域内の表セグメントの最新の読取り時間の追跡', true);
+	pushChoice('ユーザー表領域内の表セグメントに対する最新の書き込み時間の追跡', true);
+	pushChoice('テーブルセグメント内の各ブロックの最新の書き込み時間を追跡する', true);
+	pushChoice('sysauxテーブルスペース内のテーブルセグメントに対する最新の書き込み時間の追跡', false);
+	pushChoice('テーブル行に対して行ごとに挿入時間を追跡する', false);
+	pushChoice('sysauxテーブルスペース内のテーブルセグメントの最新の読み取り時間の追跡', false);
+	sortChoice();
+	
+	// 404
+	q_list.push(new Question('プラガブルデータベース（PDB）としてOracle 11gデータベースをマルチテナントコンテナデータベース（CDB）に追加するために使用できる方法として正しいものを2つ選択しなさい。',
+	''));
+	pushChoice('CDBにPDBを事前に作成し、データポンプインポートとともにNETWORK_LINKおよびPARALLELパラメータを使用して、Oracle 11gデータベースから新しく作成されたPDBにデータをインポートします。', true);
+	pushChoice('CREATE DATABASE ... ENABLE PLUGGABLE DATABASE文を使用してPDB $ SEEDからデータファイルをコピーしてPDBを作成し、データポンプを使用してOracle 11gデータベースから新しく作成されたPDBにデータをロードします。', false);
+	pushChoice('CDBにPDBを事前に作成し、データポンプを使用して、Oracle 11gデータベースの完全なデータベースエクスポートから新しく作成されたPDBにデータをロードします。', false);
+	pushChoice('DBMS_PDBパッケージを使用して、Oracle 11gデータベースを既存のCDBにPDBとして接続します。', false);
+	pushChoice('Oracle 11gデータベースを12cのCDB以外のデータベースにアップグレードし、DBMS_PDB.DESCRIBEプロシージャを使用してデータベースを新しいPDBとしてCDBに接続します。', true);
+	sortChoice();
+	
+	// 405
+	q_list.push(new Question('どの3つのシナリオでメディア回復が必要ですか。',
+	''));
+	pushChoice('データベースから表領域が誤って削除された場合', true);
+	pushChoice('アーカイブREDOログファイルが失われたとき', false);
+	pushChoice('データファイルが失われたとき', true);
+	pushChoice('オンラインREDOログメンバーの1つが破損したとき', false);
+	pushChoice('すべての制御ファイルが失われたとき', true);
+	sortChoice();
+	
+	// 406
+	q_list.push(new Question('データウェアハウスのワークロードをサポートし、noarchivelogモードで実行されているデータベースを管理しています。'
+	+ '\nRMANを使用して、日曜日にレベル0のバックアップを実行し、それ以外の曜日はレベル1の増分バックアップを実行します。'
+	+ '\nデータファイルの1つが破損しており、メディア障害のために現在のオンラインREDOログファイルが失われています。'
+	+ '\nデータファイルを回復します。'
+	+ '\n回復プロセスに含まれる手順を調べます。'
+	+ '\n'
+	+ '\n1.データベースインスタンスを停止します。'
+	+ '\n2.データベースインスタンスをnomount状態で起動します。'
+	+ '\n3.データベースをマウントします。'
+	+ '\n4.データファイルをオフラインにします。'
+	+ '\n5.データファイルをオンラインにします。'
+	+ '\n6.制御ファイルを復元します。'
+	+ '\n7.データベースを復元します。'
+	+ '\n8.データファイルを復元します。'
+	+ '\n9.resetlogオプションを指定してデータベースを開きます。'
+	+ '\n10.noredoオプションでデータベースを回復します。'
+	+ '\n11.noredoオプションを使用してデータファイルを回復します。'
+	+ '\n'
+	+ '\n必要な手順を正しい順序で識別してください。',
+	''));
+	pushChoice('1、2、6、3、8、11、9', false);
+	pushChoice('1、3、8、11、9', false);
+	pushChoice('4、8、11、5', false);
+	pushChoice('1、2、6、3、7、10、9', true);
+	pushChoice('1、3、7、10、9', false);
+	sortChoice();
 }());
 
 (function(){
