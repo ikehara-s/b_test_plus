@@ -5353,4 +5353,5 @@ function sortQuestion(){
 
 (function(){
     sortQuestion();
+	console.log(q_list);	
 }());
