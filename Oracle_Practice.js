@@ -5109,6 +5109,187 @@ function sortQuestion(){
 	sortChoice();
 	
 	// 375
+	q_list.push(new Question('SYSDBA権限を持つ共通ユーザーとしてプラガブルデータベース（PDB）に接続している。'
+	+ '\nPDBがオープンの状態で、SHUTDOWN IMMEDIATEコマンドを発行した。'
+	+ '\n結果はどうなる？',
+	''));
+	pushChoice('PDBはクローズする。', false);
+	pushChoice('PDBはマウント状態になる。', true);
+	pushChoice('共通ユーザーがPDBのSET CONTAINER特権を付与されている場合にのみコマンドが実行される。', false);
+	pushChoice('ローカルユーザーだけがPDBをシャットダウンできるため、コマンドがエラーになる。', false);
+	sortChoice();
+	
+	// 376
+	q_list.push(new Question('メディアマネージャインタフェースを介してテープへのデータベースバックアップを実行している間、RMANがデータブロックをテープドライブに十分な速度で送信していないため、テープストリーミングが行われていないという問題がある。'
+	+ '\nバックアップ中にテープストリーミングを実行するために正しい操作を2つ選択しなさい。',
+	''));
+	pushChoice('rateパラメータで容量を増やすようにチャネルを設定する', false);
+	pushChoice('3LKSIZEオプションを使用してテープバッファサイズを調整するようにチャネルを設定する', true);
+	pushChoice('増分バックアップを使用してバックアップポリシーを構成する', false);
+	pushChoice('バックアップの最適化を設定する', false);
+	pushChoice('large_poolを設定する（まだ行っていない場合）。あるいは、large_poolのサイズを増やす', false);
+	pushChoice('maxopenfilesを増やすようにチャネルを設定する', true);
+	sortChoice();
+	
+	// 377
+	q_list.push(new Question('Oracle 11gデータベースをマルチテナントコンテナデータベース（CDB）内のプラガブルデータベース（PDB）として移行するとします。'
+	+ '\n移行を実行するために必要な手順を調べます。'
+	+ '\n'
+	+ '\n1. Data Pumpエクスポートを使用して、エクスポートパラメータVERSION = 12を指定して、ソースデータベースで完全に転送可能なエクスポートを実行します。'
+	+ '\n2.ソースデータベースで、すべての表領域を読み取り専用モードにします。'
+	+ '\n3.ソースデータベースをOracle Database 12cにアップグレードします。'
+	+ '\n4.ダンプファイルとデータファイルをターゲットデータベースの適切な場所にコピーします。'
+	+ '\n5.ターゲットCDBに新しいPDBを作成します。'
+	+ '\n6.ターゲットCDBのPDBを同期します。'
+	+ '\n7.フル・トランスポータブル・インポート・オプションを使用して、新しいPDBでData Pump Importを使用します。'
+	+ '\n'
+	+ '\n必要な手順を正しい順序で識別してください。',
+	'この例は、ダンプファイルベースの完全にトランスポータブルなエクスポート/インポート操作です。'
+	+ '\nこの場合、ソースデータベースからのメタデータはダンプファイルにエクスポートされ、ダンプファイルとテーブルスペースデータファイルの両方が新しいシステムに転送されます。'
+	+ '\n手順は次のとおりです。'
+	+ '\n'
+	+ '\nソースデータベースのユーザー表領域をREAD ONLYに設定します。'
+	+ '\nソースデータベースのインポート先となるPDBを含めて、ターゲットシステム上にCDBを作成します。'
+	+ '\nOracle Database 11gリリース2（11.2.0.3）環境から、FULL = YおよびTRANSPORTABLE = ALWAYSパラメータを使用して、ソースデータベースから管理表領域にあるメタデータおよびすべてのデータをエクスポートします。'
+	+ '\nVERSION = 12パラメータは、Oracle Database 11gリリース2データベースからエクスポートする場合にのみ必要です。'
+	+ '\nソースシステムからターゲットシステムにテーブルスペースデータファイルをコピーします。'
+	+ '\nOracle Database 12c環境の場合、作成済みのPDBに接続してダンプファイルをインポートします。'));
+	pushChoice('1、5、4、7、6', false);
+	pushChoice('3、2、5、1、4、7', false);
+	pushChoice('2、5、1、4、7、6', true);
+	pushChoice('2、1、3、5、7、6', false);
+	sortChoice();
+	
+	// 378
+	q_list.push(new Question('フォーマット済みブロックのみがバックアップされるようにデータベースをバックアップしたいとします。'
+	+ '\nこのバックアップ操作について正しい説明はどれですか。',
+	''));
+	pushChoice('データベースはイメージコピーとしてバックアップする必要があります。', false);
+	pushChoice('バックアップはマウント状態で実行する必要があります。', false);
+	pushChoice('表領域をオフラインにする必要があります。', false);
+	pushChoice('すべてのファイルをバックアップセットとしてバックアップする必要があります。', true);
+	sortChoice();
+	
+	// 379
+	q_list.push(new Question('Oracle Data Pumpに関して正しい説明を2つ選んでください。',
+	''));
+	pushChoice('EXPDPとIMPDPは、Oracle Data Pumpのクライアントコンポーネントです。', true);
+	pushChoice('DBMS_DATAPUMP PL / SQLパッケージは、Data Pumpクライアントとは無関係に使用できます。', true);
+	pushChoice('Oracle Data Pumpのエクスポートおよびインポート操作は、SYSDBA権限を持つユーザーのみが実行できます。', false);
+	pushChoice('Oracle Data Pumpのインポートは、Original Export Utilityで生成されたエクスポートファイルから実行できます。', false);
+	pushChoice('EXPDPおよびIMPDPは、エクスポートおよびインポートのコマンドを実行するためにDBMS_METADATAで提供されているプロシージャを使用します。', false);
+	sortChoice();
+	
+	// 380
+	q_list.push(new Question('データベースリソースマネージャを使用する目的として正しいものを2つ選択しなさい。',
+	''));
+	pushChoice('ユーザーに許可される同時セッションの最大数を指定します', false);
+	pushChoice('データベースコールごとに使用されるCPUを制限する', false);
+	pushChoice('アイドル状態で他のセッションをブロックしているセッションに適用されるアイドル時間制限を指定します。', true);
+	pushChoice('ユーザーまたはユーザーグループによって実行される操作の並列度を制限する', true);
+	pushChoice('SGAの共有プールにセッションが割り当てることができるプライベートスペースの量を指定します', false);
+	sortChoice();
+	
+	// 381
+	q_list.push(new Question('11.2.0.3データベースをOracle 12cデータベースに移行する必要があります。'
+	+ '\nこのタスクを実行するために使用される可能性があるステップのリストを調べます。'
+	+ '\n'
+	+ '\n1.ソースデータベースで、すべてのユーザー定義テーブルスペースを読み取り専用モードにします。'
+	+ '\n2.必要に応じて、RMANのconvertコマンドを使用して、データファイルをターゲットプラットフォームのエンディアン形式に変換します。'
+	+ '\n3.パラメータVERSI0N = 12、TRANSPORTABLE = ALWAYS、およびFULL = Yを使用して、ソースデータベースで完全に転送可能なエクスポートを実行します。'
+	+ '\n4.すべてのユーザー定義表領域のデータファイルを転送します。'
+	+ '\n5.エクスポートダンプファイルをターゲットデータベースに転送します。'
+	+ '\n6. full、network_link、およびtransportable_datafilesパラメータを使用して、ターゲットデータベースでインポートを実行します。'
+	+ '\n7. fullパラメータとtransportable_datafilesパラメータを使用して、ターゲットデータベースでインポートを実行します。'
+	+ '\n'
+	+ '\n必要な手順を正しい順序で識別してください。'
+	+ '\n',
+	''));
+	pushChoice('2、4、5、6、7', false);
+	pushChoice('1、2、4、7', false);
+	pushChoice('1、3、5、4、2、7', true);
+	pushChoice('1、2、4、6、5、3、7', false);
+	sortChoice();
+	
+	// 382
+	q_list.push(new Question('マルチテナントコンテナデータベース（CDB）に複数のプラガブルデータベース（PDB）が含まれています。'
+	+ '\nコマンドを実行して共通ユーザーを作成します。'
+	+ '\n'
+	+ '\nSQL> CREATE USER c ## a_admin IDENTIFIED BY password'
+	+ '\n  DEFAULT TABLESPACE users'
+	+ '\n  QUOTA 100M ON users'
+	+ '\n  TEMPORARY TABLESPACE temp'
+	+ '\n '
+	+ '\nコマンドについて正しい説明を選択しなさい。',
+	''));
+	pushChoice('CONTAINER = ALL句がないため、コマンドはエラーになります。', false);
+	pushChoice('このコマンドは成功し、USERStablespaceがそのPDBに存在しない場合は、PDBのデフォルトの永続表領域をC ## A_ADMINuserのデフォルトの表領域として設定します。', false);
+	pushChoice('すべてのPDBにUSERSおよびTEMPテーブルスペースがある場合にのみコマンドが成功します。', true);
+	pushChoice('CDBとすべてのPDBに共通ユーザーが作成され、CDBのユーザーと一時表領域を使用してスキーマオブジェクトを格納します。', false);
+	sortChoice();
+	
+	// 383
+	q_list.push(new Question('sys、system、およびscottを除くすべてのデータベースユーザーに対して監査ポリシーを有効にします。次のSQL文を発行します。'
+	+ '\n'
+	+ '\nSQL> AUDIT POLICY ORA_DATABASE_PARAMETER EXCEPT SYS;'
+	+ '\nSQL> AUDIT POLICY ORA_DATABASE_PARAMETER EXCEPT SYSTEM;'
+	+ '\nSQL> AUDIT POLICY ORA_DATABASE_PARAMETER EXCEPT SCOTT;',
+	''));
+	pushChoice('sysとscottを除くすべてのユーザー', false);
+	pushChoice('scottを除くすべてのユーザー', true);
+	pushChoice('sys、system、およびscottを除くすべてのユーザー', false);
+	pushChoice('sysを除くすべてのユーザー', false);
+	sortChoice();
+	
+	// 384
+	q_list.push(new Question('RMANコマンドを発行します。'
+	+ '\n'
+	+ '\nRMAN> CONFIGURE DEFAULT DEVICE TYPE TO DISK;'
+	+ '\nRMAN> CONFIGURE DEVICE TYPE DISK BACKUP TYPE TO COPY;'
+	+ '\nRMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;'
+	+ '\nRMAN> BACKUP DATABASE PLUS ARCHIVELOG DELETE INPUT;'
+	+ '\n'
+	+ '\nBACKUP DATABASEコマンドで実行されるタスクとして正しいものを3つ選択しなさい。',
+	''));
+	pushChoice('データファイル内の使用済みブロックと未使用ブロックをすべてバックアップします。', true);
+	pushChoice('データファイルの使用済みブロックだけをバックアップします。', false);
+	pushChoice('すべてのアーカイブログファイルをバックアップし、それらを古いものとしてマークします。', false);
+	pushChoice('オンラインREDOログファイルの切り替え', true);
+	pushChoice('すべてのデータファイルをイメージコピーおよびアーカイブログファイルとしてバックアップし、それらのアーカイブログファイルを削除します', true);
+	sortChoice();
+	
+	// 385
+	q_list.push(new Question('自動診断リポジトリ（ADR）について正しい説明を2つ選択してください。',
+	''));
+	pushChoice('ADRを使用してstatspackスナップショットを保存し、データベースのパフォーマンスの問題を診断できます。', false);
+	pushChoice('ADRベースはすべての診断情報をバイナリ形式で保持します。', false);
+	pushChoice('ADRベースは複数のインスタンス間で共有されます。', true);
+	pushChoice('ADRは自動ワークロードリポジトリ（AWR）スナップショットを保存するために使用されます。', false);
+	pushChoice('データベースインスタンスが停止している場合でも、ADRを問題診断に使用できます。', true);
+	sortChoice();
+	
+	// 386
+	q_list.push(new Question('データベースはアーカイブログモードで実行されており、毎晩定期的にバックアップがとられています。'
+	+ '\nメディア障害のため、1つのメンバーを持つカレントのオンラインREDOロググループは失われ、インスタンスは停止しました。'
+	+ '\nオンラインREDOロググループをリカバリして新しい場所に移動する手順を調べます。'
+	+ '\n'
+	+ '\n1.破損したREDOロググループを復元します。'
+	+ '\n2.最新のデータベースバックアップからデータベースを復元します。'
+	+ '\n3.不完全リカバリを実行します。'
+	+ '\n4.破損したオンラインREDOロググループのメンバーを新しい場所に移動します。'
+	+ '\n5.RESETLOGSオプションを指定してデータベースを開きます。'
+	+ '\n6.チェックポイントを発行してログを消去します。'
+	+ '\n'
+	+ '\n必要な手順を説明した選択肢を選びなさい。',
+	''));
+	pushChoice('2、3、4、5', true);
+	pushChoice('6、3、4、5', false);
+	pushChoice('1、3、4、5', false);
+	pushChoice('6、4、3、5', false);
+	sortChoice();
+	
+	// 387
+	
 }());
 
 (function(){
