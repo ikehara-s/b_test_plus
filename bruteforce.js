@@ -71,7 +71,18 @@
         this.blt(img, gx * 2, gy * 2, gx, gy, x + sx - gx, y + sy - gy);
     };
 
-
+    Bitmap.prototype.createImagePatched_h = function(img, gx, gy, x = 0, y = 0, sx = this.width){
+        this.blt(img, 0, 0, gx, gy, x, y);
+        this.blt(img, gx, 0, gx, gy, x + gx, y, sx - gx * 2, gy);
+        this.blt(img, gx * 2, 0, gx, gy, x + sx - gx, y);
+    };
+    
+    Bitmap.prototype.createImagePatched_v = function(img, gx, gy, x = 0, y = 0, sy = this.height){
+        this.blt(img, 0, 0, gx, gy, x, y);
+        this.blt(img, 0, gy, gx, gy, x, y + gy, gx, sy - gy * 2);
+        this.blt(img, 0, gy * 2, gx, gy, x, y + sy - gy);
+    };
+    
     //=============================================================================
     // Images_Archive
     //  画像関連のあれやこれを定義します。
